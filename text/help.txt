@@ -1,0 +1,13 @@
+Odrađen glavni prozor u kojem je meni bar.
+Meni bar se sastoji iz podmenija koji imaju stavke radi lakšeg manipulisanja aplikacijom i entitetima.
+File
+a) New (CTRL+N)
+b) Close (CTRL+C)
+
+Edit
+a) Edit (CTRL+E)
+b) Delete (CTRL+D)
+
+Help
+a) Help (CTRL+H)
+b) About (CTRL+A)

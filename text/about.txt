@@ -1,0 +1,3 @@
+Autori: Vladimir Rokvić i Silvija Tepšić
+
+Aplikacija je deo projekta za predmet "Osnovni informacionih sistema i softverskog inženjerstva".

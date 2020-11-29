@@ -22,5 +22,7 @@ public class MainFrame extends JFrame{
 		JLabel labela1=new JLabel("TODO: Prikaz entiteta sistema");
 		panel1.add(labela1);
 		this.add(panel1);
+		MyMenuBar myMenu = new MyMenuBar(this);
+		this.setJMenuBar(myMenu);
 	}
 }
