@@ -1,5 +1,6 @@
 package rs.ac.uns;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -24,5 +25,7 @@ public class MainFrame extends JFrame{
 		this.add(panel1);
 		MyMenuBar myMenu = new MyMenuBar(this);
 		this.setJMenuBar(myMenu);
+		StatusBar sBar = new StatusBar();
+		this.add(sBar, BorderLayout.SOUTH);
 	}
 }
