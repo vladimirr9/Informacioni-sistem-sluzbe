@@ -1,4 +1,4 @@
-Odrađen glavni prozor u kojem su meni bar i status bar.
+Odrađen glavni prozor u kojem su meni bar, status bar i toolbar.
 Meni bar se sastoji iz podmenija koji imaju stavke radi lakšeg manipulisanja aplikacijom i entitetima.
 Status bar prikazuje ime projekta sa leve strane, a trenutni datum i vreme sa desne.
 File
@@ -13,4 +13,8 @@ Help
 a) Help (CTRL+H)	- prozor za pomoć pri korišćenju aplikacije
 b) About (CTRL+A)	- prozor sa informacijama o autorima
 
+Toolbar sadrži dugme za kreiranje entiteta(CTRL+N),dugme za izmenu postojećeg entiteta(CTRL+E),dugme za brisanje entiteta(CTRL+D)
+kao i tekstualno polje i dugme za pretragu.
+
 Ovo je nedovršena lista, implementacija drugih funkcionalnosti je u toku i informacije o njima će naknadno biti dodate.
+
