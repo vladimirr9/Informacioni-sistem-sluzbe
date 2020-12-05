@@ -24,7 +24,7 @@ public class StatusBar extends JPanel {
 		this.setBorder(new LineBorder(new Color(0)));
 		
 		TimeListener tl = new TimeListener();
-		Timer timer = new Timer(1*1000, tl);		// proverava svaki sekund
+		Timer timer = new Timer(60*1000, tl);		// proverava svaki minut
 		timer.setInitialDelay(0);
 		timer.start();
 		
