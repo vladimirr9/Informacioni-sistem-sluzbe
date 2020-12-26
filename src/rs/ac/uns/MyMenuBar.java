@@ -2,6 +2,7 @@ package rs.ac.uns;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,25 +12,37 @@ import javax.swing.JMenuItem;
 import javax.swing.JToolBar.Separator;
 import javax.swing.KeyStroke;
 
-import MenuActions.AboutHelpAction;
-import MenuActions.CloseFileAction;
-import MenuActions.DeleteEditAction;
-import MenuActions.EditEditAction;
-import MenuActions.HelpHelpAction;
-import MenuActions.NewFileAction;
+
+import rs.ac.uns.abstractActions.AboutHelpAction;
+import rs.ac.uns.abstractActions.CloseFileAction;
+import rs.ac.uns.abstractActions.DeleteAction;
+import rs.ac.uns.abstractActions.EditAction;
+import rs.ac.uns.abstractActions.HelpHelpAction;
+import rs.ac.uns.abstractActions.NewAction;
 
 public class MyMenuBar extends JMenuBar 
 {
 	
 	public MyMenuBar(final JFrame parent)
 	{
+		String address;
 		JMenu mFile = new JMenu("File");				// file podmeni
 		mFile.setMnemonic(KeyEvent.VK_F);
 	
-		NewFileAction newEntity = new NewFileAction();
+		//NewFileAction newEntity = new NewFileAction();
 		CloseFileAction closeFile = new CloseFileAction();
 		
-		mFile.add(newEntity);
+		NewAction newEntity = new NewAction();
+		JMenuItem newActionItem = new JMenuItem(newEntity);
+		
+		newActionItem.setText("New");
+		newActionItem.setMnemonic(KeyEvent.VK_N);
+		address = "images" + File.separator + "icons"  + File.separator + "add.png";
+		newActionItem.setIcon( new ImageIcon(address));
+		
+		
+		
+		mFile.add(newActionItem);
 		mFile.addSeparator();
 		mFile.add(closeFile);
 
@@ -37,13 +50,26 @@ public class MyMenuBar extends JMenuBar
 		JMenu mEdit = new JMenu("Edit");				// edit podmeni
 		mEdit.setMnemonic(KeyEvent.VK_E);
 		
-		EditEditAction editEntity = new EditEditAction();
-		DeleteEditAction deleteEntity = new DeleteEditAction();
+		EditAction editEntity = new EditAction();
+		DeleteAction deleteEntity = new DeleteAction();
 		
 		
-		mEdit.add(editEntity);
+		JMenuItem editItem = new JMenuItem(editEntity);
+		editItem.setText("Edit");
+		editItem.setMnemonic(KeyEvent.VK_E);
+		address = "images" + File.separator + "icons"  + File.separator + "edit.png";
+		editItem.setIcon( new ImageIcon(address));
+		
+		JMenuItem deleteItem = new JMenuItem(deleteEntity);
+		
+		deleteItem.setText("Edit");
+		deleteItem.setMnemonic(KeyEvent.VK_E);
+		address = "images" + File.separator + "icons"  + File.separator + "delete.png";
+		deleteItem.setIcon( new ImageIcon(address));
+		
+		mEdit.add(editItem);
 		mEdit.addSeparator();
-		mEdit.add(deleteEntity);
+		mEdit.add(deleteItem);
 
 		
 		JMenu mHelp = new JMenu("Help");				// help podmeni

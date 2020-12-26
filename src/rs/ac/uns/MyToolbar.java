@@ -19,9 +19,9 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import ToolbarActions.DeleteAction;
-import ToolbarActions.EditAction;
-import ToolbarActions.NewAction;
+import rs.ac.uns.abstractActions.DeleteAction;
+import rs.ac.uns.abstractActions.EditAction;
+import rs.ac.uns.abstractActions.NewAction;
 
 public class MyToolbar extends JToolBar {
 	public MyToolbar() {

@@ -1,4 +1,4 @@
-package ToolbarActions;
+package rs.ac.uns.abstractActions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
