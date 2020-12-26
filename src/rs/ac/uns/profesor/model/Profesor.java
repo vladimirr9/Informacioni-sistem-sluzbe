@@ -20,9 +20,6 @@ public class Profesor {
 	private List<Predmet>predmeti;
 	
 
-	
-
-
 	public Profesor() {
 		super();
 	}
