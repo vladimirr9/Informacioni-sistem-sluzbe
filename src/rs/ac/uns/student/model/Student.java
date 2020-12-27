@@ -14,7 +14,7 @@ public class Student {
 	private String emailAdresa;
 	private String brojIndeksa;
 	private String godinaUpisa;
-	private String trenutnaGodinaStudija;
+	private GodinaStudiranja trenutnaGodinaStudija;
 	private StudentStatus status;
 	private float prosecnaOcena;
 	private List<Ocena> polozeniIspiti;
@@ -23,28 +23,13 @@ public class Student {
 	
 	
 	
-	
-	
-	
 	public Student() {
 		super();
 	}
 
-
-	public Student(String prezime, String ime, String brojIndeksa, String trenutnaGodinaStudija, StudentStatus status,
-			float prosecnaOcena) {
-		super();
-		this.prezime = prezime;
-		this.ime = ime;
-		this.brojIndeksa = brojIndeksa;
-		this.trenutnaGodinaStudija = trenutnaGodinaStudija;
-		this.status = status;
-		this.prosecnaOcena = prosecnaOcena;
-	}
-	
 	
 	public Student(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String emailAdresa, String brojIndeksa, String godinaUpisa, String trenutnaGodinaStudija, StudentStatus s,
+			String emailAdresa, String brojIndeksa, String godinaUpisa, GodinaStudiranja trenutnaGodinaStudija, StudentStatus s,
 			float prosecnaOcena, List<Ocena> polozeniIspiti, List<String> nepolozeniIspiti) {
 		super();
 		this.prezime = prezime;
@@ -109,10 +94,10 @@ public class Student {
 	public void setGodinaUpisa(String godinaUpisa) {
 		this.godinaUpisa = godinaUpisa;
 	}
-	public String getTrenutnaGodinaStudija() {
+	public GodinaStudiranja getTrenutnaGodinaStudija() {
 		return trenutnaGodinaStudija;
 	}
-	public void setTrenutnaGodinaStudija(String trenutnaGodinaStudija) {
+	public void setTrenutnaGodinaStudija(GodinaStudiranja trenutnaGodinaStudija) {
 		this.trenutnaGodinaStudija = trenutnaGodinaStudija;
 	}
 	public StudentStatus getStatus() {

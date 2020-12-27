@@ -12,10 +12,13 @@ import javax.swing.JTable;
 
 import rs.ac.uns.profesor.view.AbstractTableModelProfesori;
 import rs.ac.uns.profesor.view.ProfesoriJTable;
+import rs.ac.uns.student.view.AbstractTableModelStudent;
+import rs.ac.uns.student.view.StudentJTable;
 
 public class MainFrame extends JFrame{
 	
 	private JTable tabelaProfesora;
+	private JTable tabelaStudent;
 	
 	private static MainFrame instance = null;
 
@@ -57,9 +60,14 @@ public class MainFrame extends JFrame{
 		
 		tabelaProfesora = new ProfesoriJTable();
 		JScrollPane scrollPane = new JScrollPane(tabelaProfesora);
+		tabelaStudent = new StudentJTable();
+		JScrollPane scrollPane2 = new JScrollPane(tabelaStudent);
+		
+		
 		
 		JTabbedPaneMine tabbedPane=new JTabbedPaneMine();
-		tabbedPane.addTab("Studenti", panel1);
+		tabbedPane.addTab("Studenti", scrollPane2);
+		this.azurirajPrikazStudenta(null, -1);
 		tabbedPane.addTab("Profesori", scrollPane);
 		this.azurirajPrikazProfesora(null, -1);
 		tabbedPane.addTab("Predmeti", panel3);
@@ -70,6 +78,11 @@ public class MainFrame extends JFrame{
 	
 	public void azurirajPrikazProfesora(String akcija, int vrednost) {
 		AbstractTableModelProfesori model = (AbstractTableModelProfesori) tabelaProfesora.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+	public void azurirajPrikazStudenta(String akcija, int vrednost) {
+		AbstractTableModelStudent model = (AbstractTableModelStudent) tabelaStudent.getModel();
 		model.fireTableDataChanged();
 		validate();
 	}
