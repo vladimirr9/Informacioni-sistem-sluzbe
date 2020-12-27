@@ -1,3 +1,16 @@
 Autori: Vladimir Rokvić i Silvija Tepšić
 
-Aplikacija je deo projekta za predmet "Osnovni informacionih sistema i softverskog inženjerstva".
+Vladimir Rokvić je rođen 09.05.1999. u Novom Sadu. Pohađao je osnovnu školu "Jovan Jovanović Zmaj" u Novom Kneževcu,
+srednju školu Gimnazija u Novom Kneževcu i nastavio školovanje na Fakultetu tehničkih nauka u Novom Sadu na smeru računarstvo i automatika 2018. godine.
+Trenutno je na trećoj godini osnovnih akademskih studija i živi u Novom Kneževcu.
+email radi kontaka: vladimir.rokvic9@gmail.com
+
+Silvija Tepšić je rođena 08.10.1999. u Rumi. Pohađala je osnovnu školu "Veljko Dugošević" u Rumi,
+srednju školu "Stevan Puzić" u Rumi i nastavila školovanje na Fakultetu tehničkih nauka u Novom Sadu na smeru računarstvo i automatika 2018 godine.
+Trenutno je na trećoj godini osnovnih akademskih studija i živi u Rumi.
+email radi kontakta: silvijat99@gmail.com
+
+Aplikacija je namenjena da bude korišćena od strane referenta studentske službe. Početni prozor sadrži meni bar, tool bar i status bar, dok su relevantni entiteti
+za modelovanje studentske službe su raspoređeni po tabovima, a prilikom selekcije istih se otvaraju odgovarajuće tabele koje sadrže podatke o realnim entitetima.
+Omogućeno je dodavanje novih entiteta, brisanje, modifikacija kao i pretraga nad njima.
+Aplikacija je deo projekta za predmet "Osnovni informacionih sistema i softverskog inženjerstva". Implementacija aplikacije je izvršena u programskom jeziku Java.

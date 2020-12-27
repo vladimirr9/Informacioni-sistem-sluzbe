@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 
 import rs.ac.uns.student.controller.StudentController;
 import rs.ac.uns.student.model.GodinaStudiranja;
+import rs.ac.uns.student.model.Student;
 import rs.ac.uns.student.model.StudentStatus;
 
 public class StudentDialog extends JDialog {
@@ -98,7 +99,7 @@ public class StudentDialog extends JDialog {
 		this.add(label7,gbc);
 		
 		JTextField txtField7=new JTextField();
-		txtField7.setToolTipText("SMER-BROJ-GODINA");
+		//txtField7.setToolTipText("SMER-BROJ-GODINA");
 		gbc=new GridBagConstraints(1, 6, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField7,gbc);
 		
@@ -178,7 +179,14 @@ public class StudentDialog extends JDialog {
 					else godinaStudiranja = GodinaStudiranja.V;
 					
 					
-					//StudentStatus status=(StudentStatus) combo2.getSelectedItem();
+					boolean postoji = false;
+					for (Student s : StudentController.getInstance().getStudenti())
+					{
+						if (s.getBrojIndeksa().equals(brojIndeksa))
+							postoji = true;
+					}
+					
+
 					StudentStatus status;
 					if (combo2.getSelectedItem().toString().equals("Budžet"))
 						status = StudentStatus.B;
@@ -198,9 +206,10 @@ public class StudentDialog extends JDialog {
 						JOptionPane.showMessageDialog(null, "Neispravno unet broj telefona!");
 					} else if(!Pattern.matches("^(.+)@(.+)$", emailAdresa)) {
 						JOptionPane.showMessageDialog(null, "Neispravno uneta email adresa!");
-					} else if(!Pattern.matches("[a-zA-Z]{2,3}-[0-9]{1,3}-[0-9]{4}", brojIndeksa)) {
-						JOptionPane.showMessageDialog(null, "Neispravno unet broj indeksa!");
-					} else if(!Pattern.matches("[0-9]{4}", godinaUpisa)) {
+					} else if (postoji) {
+						JOptionPane.showMessageDialog(null, "Broj indeksa već postoji!");
+					}
+						else if(!Pattern.matches("[0-9]{4}", godinaUpisa)) {
 						JOptionPane.showMessageDialog(null, "Neispravno uneta godina upisa!");
 					} else {
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());

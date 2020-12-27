@@ -28,8 +28,7 @@ public class MyMenuBar extends JMenuBar
 		String address;
 		JMenu mFile = new JMenu("File");				// file podmeni
 		mFile.setMnemonic(KeyEvent.VK_F);
-	
-		//NewFileAction newEntity = new NewFileAction();
+		
 		CloseFileAction closeFile = new CloseFileAction();
 		
 		NewAction newEntity = new NewAction(parent);

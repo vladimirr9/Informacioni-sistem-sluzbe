@@ -13,7 +13,7 @@ import javax.swing.Timer;
 import javax.swing.border.LineBorder;
 
 public class StatusBar extends JPanel {
-	private final String appName = "Studentska sluûba";
+	private final String appName = "Studentska slu≈æba";
 	private String time;
 	JLabel appNameLabel = new JLabel(appName);
 	JLabel timeLabel = new JLabel();

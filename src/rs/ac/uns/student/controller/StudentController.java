@@ -7,6 +7,7 @@ import rs.ac.uns.MainFrame;
 import rs.ac.uns.ocena.model.Ocena;
 import rs.ac.uns.student.model.BazaStudent;
 import rs.ac.uns.student.model.GodinaStudiranja;
+import rs.ac.uns.student.model.Student;
 import rs.ac.uns.student.model.StudentStatus;
 
 public class StudentController {
@@ -28,5 +29,9 @@ private static StudentController instance = null;
 				emailAdresa, brojIndeksa, godinaUpisa, trenutnaGodinaStudija, status, prosecnaOcena,
 				polozeniIspiti, nepolozeniIspiti);
 		MainFrame.getInstance().azurirajPrikazStudenta("DODAT", -1);
+	}
+	
+	public List<Student> getStudenti(){
+		return BazaStudent.getInstance().getStudenti();
 	}
 }
