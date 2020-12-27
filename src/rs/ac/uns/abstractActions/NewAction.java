@@ -4,16 +4,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
+import rs.ac.uns.MainFrame;
+import rs.ac.uns.profesor.view.ProfesoriDialog;
+
 public class NewAction extends AbstractAction{
+	
+	private final JFrame parent;
+	
 	public NewAction() {
+		parent=null;
+	}
+	public NewAction(final JFrame parent) {
+		this.parent=parent;
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
+		if(MainFrame.tabbedPane.getSelectedIndex()==1) {
+			ProfesoriDialog profesoriDialog=new ProfesoriDialog(parent, "Dodavanje profesora", true);
+			profesoriDialog.setVisible(true);
+		}
 	}
  
 }

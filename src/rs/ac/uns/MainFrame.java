@@ -19,7 +19,7 @@ public class MainFrame extends JFrame{
 	
 	private JTable tabelaProfesora;
 	private JTable tabelaStudent;
-	
+	public static JTabbedPaneMine tabbedPane;
 	private static MainFrame instance = null;
 
 	public static MainFrame getInstance() {
@@ -54,7 +54,7 @@ public class MainFrame extends JFrame{
 		this.setJMenuBar(myMenu);
 		StatusBar sBar = new StatusBar();
 		this.add(sBar, BorderLayout.SOUTH);
-		MyToolbar toolbar=new MyToolbar();
+		MyToolbar toolbar=new MyToolbar(this);
 		this.add(toolbar,BorderLayout.NORTH);
 		
 		
@@ -65,7 +65,7 @@ public class MainFrame extends JFrame{
 		
 		
 		
-		JTabbedPaneMine tabbedPane=new JTabbedPaneMine();
+		tabbedPane=new JTabbedPaneMine();
 		tabbedPane.addTab("Studenti", scrollPane2);
 		this.azurirajPrikazStudenta(null, -1);
 		tabbedPane.addTab("Profesori", scrollPane);

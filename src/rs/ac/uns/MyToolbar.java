@@ -11,6 +11,7 @@ import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -24,7 +25,7 @@ import rs.ac.uns.abstractActions.EditAction;
 import rs.ac.uns.abstractActions.NewAction;
 
 public class MyToolbar extends JToolBar {
-	public MyToolbar() {
+	public MyToolbar(final JFrame parent) {
 		super(SwingConstants.HORIZONTAL);
 		setBorder(new LineBorder(Color.BLACK));
 		setFloatable(false);
@@ -33,11 +34,11 @@ public class MyToolbar extends JToolBar {
 		setLayout(gb);
 		GridBagConstraints gbc=new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
 		
-		NewAction newA=new NewAction();
+		NewAction newA=new NewAction(parent);
 		EditAction editA=new EditAction();
 		DeleteAction delA=new DeleteAction();
 		
-		JButton btn1 = new JButton();
+		JButton btn1 = new JButton(newA);
 		btn1.getActionMap().put("newAction", newA);
         btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put((KeyStroke) newA.getValue(Action.ACCELERATOR_KEY), "newAction");
 		btn1.setIcon(new ImageIcon("images/icons/add.png"));
