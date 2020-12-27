@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import rs.ac.uns.profesor.controller.ProfesorController;
+import rs.ac.uns.profesor.model.BazaProfesora;
 import rs.ac.uns.profesor.model.Profesor;
 import rs.ac.uns.profesor.model.ProfesorTitula;
 import rs.ac.uns.profesor.model.ProfesorZvanje;
@@ -144,30 +145,39 @@ public class ProfesoriDialog extends JDialog {
 					String getBrojLicneKarte=txtField8.getText();
 					ProfesorTitula getTitula=(ProfesorTitula) combo.getSelectedItem();
 					ProfesorZvanje getZvanje=(ProfesorZvanje) combo2.getSelectedItem();
-					if(!Pattern.matches("[a-zA-Z]+", getPrezime)) {
+					
+					int ponovljenaLicna=0;
+						
+					for(Profesor p:ProfesorController.getInstance().getProfesori()) {
+							if(p.getBrojLicneKarte().equals(getBrojLicneKarte)) {
+								ponovljenaLicna=1;
+							}
+						}
+					
+					if(!Pattern.matches("([a-zA-ZšđčćžŠĐČĆŽ]+[\\s]*)+", getPrezime)) {
 						JOptionPane.showMessageDialog(null, "Neispravno prezime!");
 					} 
-					else if(!Pattern.matches("[a-zA-Z]+", getIme)) {
+					else if(!Pattern.matches("([a-zA-ZšđčćžŠĐČĆŽ]+[\\s]*)+", getIme)) {
 						JOptionPane.showMessageDialog(null, "Neispravno ime!");
 					} 
-					else if(!Pattern.matches("[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}", txtField3.getText())) {
-						JOptionPane.showMessageDialog(null, "Neispravan datum!");
-					} else if(!Pattern.matches("([\\w]+[\\s]+)+[0-9]+[\\s]*,[\\s]*([\\w]+[\\s]*)+", getAdresaStanovanja)) {
-						JOptionPane.showMessageDialog(null, "Neispravna adresa stanovanja!");
-					} else if(!Pattern.matches("[0-9]+", getKontaktTelefon)) {
+					else if(!Pattern.matches("[0-9]{1,2}[.][0-9]{1,2}[.][0-9]{4}[.]", txtField3.getText())) {
+						JOptionPane.showMessageDialog(null, "Neispravan datum!\nFormat: dd.mm.yyyy.");
+					} else if(!Pattern.matches("([\\wšđčćžŠĐČĆŽ]+[\\s]+)+[0-9]+[\\s]*,[\\s]*([\\wšđčćžŠĐČĆŽ]+[\\s]*)+", getAdresaStanovanja)) {
+						JOptionPane.showMessageDialog(null, "Neispravna adresa stanovanja!\nFormat: ulica broj, grad");
+					} else if(!Pattern.matches("[+]?[0-9]+", getKontaktTelefon)) {
 						JOptionPane.showMessageDialog(null, "Neispravan kontakt telefon!");
 					} else if(!Pattern.matches("^(.+)@(.+)$", getEmailAdresa)) {
 						JOptionPane.showMessageDialog(null, "Neispravna email adresa!");
-					} else if(!Pattern.matches("([\\w]+[\\s]+)+[0-9]+[\\s]*,[\\s]*([\\w]+[\\s]*)+", getAdresaKancelarije)) {
-						JOptionPane.showMessageDialog(null, "Neispravna adresa kancelarije!");
+					} else if(!Pattern.matches("([\\wšđčćžŠĐČĆŽ]+[\\s]+)+[0-9]+[\\s]*,[\\s]*([\\wšđčćžŠĐČĆŽ]+[\\s]*)+", getAdresaKancelarije)) {
+						JOptionPane.showMessageDialog(null, "Neispravna adresa kancelarije!\nFormat: ulica broj, grad");
 					} else if(!Pattern.matches("[0-9]{9}", getBrojLicneKarte)) {
 						JOptionPane.showMessageDialog(null, "Neispravan broj lične karte!");
+					} else if(ponovljenaLicna==1) {JOptionPane.showMessageDialog(null, "Neispravan broj lične karte!");
 					} else {
-					format = new SimpleDateFormat("dd/MM/yyyy").parse(txtField3.getText());
+					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());
 					ProfesorController.getInstance().dodajProfesora(getPrezime,getIme,format,getAdresaStanovanja,getKontaktTelefon,getEmailAdresa,getAdresaKancelarije,getBrojLicneKarte,getTitula,getZvanje);
 					}
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				

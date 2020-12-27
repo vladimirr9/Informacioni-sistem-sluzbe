@@ -40,12 +40,7 @@ public class MainFrame extends JFrame{
 		setResizable(true);
 		setVisible(true);
 		
-		JPanel panel1=new JPanel();
-		JLabel labela1=new JLabel("TODO: Prikaz entiteta sistema");
-		panel1.add(labela1);
-		JPanel panel2=new JPanel();
-		JLabel labela2=new JLabel("TODO: Prikaz entiteta sistema");
-		panel2.add(labela2);
+	
 		JPanel panel3=new JPanel();
 		JLabel labela3=new JLabel("TODO: Prikaz entiteta sistema");
 		panel3.add(labela3);

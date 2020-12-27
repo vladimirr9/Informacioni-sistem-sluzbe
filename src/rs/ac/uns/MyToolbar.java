@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.File;
 
 import javax.swing.Action;
 import javax.swing.ImageIcon;
@@ -41,7 +42,7 @@ public class MyToolbar extends JToolBar {
 		JButton btn1 = new JButton(newA);
 		btn1.getActionMap().put("newAction", newA);
         btn1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put((KeyStroke) newA.getValue(Action.ACCELERATOR_KEY), "newAction");
-		btn1.setIcon(new ImageIcon("images/icons/add.png"));
+		btn1.setIcon(new ImageIcon("images"+File.separator+"icons"+File.separator+"add.png"));
 		btn1.setToolTipText("Kreiranje entiteta");
 		btn1.setBorderPainted(false);
 		this.add(btn1,gbc);
@@ -49,7 +50,7 @@ public class MyToolbar extends JToolBar {
 		JButton btn2 = new JButton(editA);
 		btn2.getActionMap().put("editAction", editA);
         btn2.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put((KeyStroke) editA.getValue(Action.ACCELERATOR_KEY), "editAction");
-		btn2.setIcon(new ImageIcon("images/icons/edit.png"));
+		btn2.setIcon(new ImageIcon("images"+File.separator+"icons"+File.separator+"edit.png"));
 		btn2.setToolTipText("Izmena entiteta");
 		btn2.setBorderPainted(false);
 		gbc=new GridBagConstraints(1, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
@@ -60,7 +61,7 @@ public class MyToolbar extends JToolBar {
 		JButton btn3 = new JButton(delA);
 		btn3.getActionMap().put("deleteAction", delA);
         btn3.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put((KeyStroke) delA.getValue(Action.ACCELERATOR_KEY), "deleteAction");
-		btn3.setIcon(new ImageIcon("images/icons/delete.png"));
+		btn3.setIcon(new ImageIcon("images"+File.separator+"icons"+File.separator+"delete.png"));
 		btn3.setToolTipText("Brisanje entiteta");
 		btn3.setBorderPainted(false);
 		gbc=new GridBagConstraints(2, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
@@ -77,7 +78,7 @@ public class MyToolbar extends JToolBar {
 		
 		
 		JButton btn4 = new JButton();
-		btn4.setIcon(new ImageIcon("images/icons/search.png"));
+		btn4.setIcon(new ImageIcon("images"+File.separator+"icons"+File.separator+"search.png"));
 		btn4.setToolTipText("Pretraga");
 		btn4.setBorderPainted(false);
 		gbc=new GridBagConstraints(5, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
