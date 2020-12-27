@@ -21,12 +21,12 @@ private static StudentController instance = null;
 	}
 	private StudentController() {}
 	
-	public void dodajStudentaString(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+	public void dodajStudenta(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 	String emailAdresa, String brojIndeksa, String godinaUpisa, GodinaStudiranja trenutnaGodinaStudija, StudentStatus status,
 	float prosecnaOcena, List<Ocena> polozeniIspiti, List<String> nepolozeniIspiti) {
 		BazaStudent.getInstance().dodajStudenta(prezime, ime, datumRodjenja, adresaStanovanja, kontaktTelefon,
 				emailAdresa, brojIndeksa, godinaUpisa, trenutnaGodinaStudija, status, prosecnaOcena,
 				polozeniIspiti, nepolozeniIspiti);
-		MainFrame.getInstance().azurirajPrikazProfesora("DODAT", -1);
+		MainFrame.getInstance().azurirajPrikazStudenta("DODAT", -1);
 	}
 }

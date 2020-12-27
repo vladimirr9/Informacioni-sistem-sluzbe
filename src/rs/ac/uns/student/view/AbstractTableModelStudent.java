@@ -6,6 +6,11 @@ import rs.ac.uns.student.model.BazaStudent;
 
 public class AbstractTableModelStudent extends AbstractTableModel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9010144744519441782L;
+
 	@Override
 	public int getRowCount() {
 		return BazaStudent.getInstance().getStudenti().size();

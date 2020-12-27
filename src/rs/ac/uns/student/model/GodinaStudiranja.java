@@ -3,28 +3,28 @@ package rs.ac.uns.student.model;
 public enum GodinaStudiranja {
 	I {
 		public String toString() {
-	          return "I (prva)";
+	          return "1.";
 	      }
 	},
 	
 	II {
 		public String toString() {
-	          return "II (druga)";
+	          return "2.";
 	      }
 	},
 	III {
 		public String toString() {
-	          return "III (treća)";
+	          return "3.";
 	      }
 	},
 	IV {
 		public String toString() {
-	          return "IV (četvrta)";
+	          return "4.";
 	      }
 	},
 	V {
 		public String toString() {
-	          return "V (peta)";
+	          return "5.";
 	      }
 	}
 	

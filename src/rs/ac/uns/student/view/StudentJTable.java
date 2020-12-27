@@ -8,6 +8,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 public class StudentJTable extends JTable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7500908696013392259L;
+
 	public StudentJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);

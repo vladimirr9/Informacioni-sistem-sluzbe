@@ -44,14 +44,14 @@ public class BazaStudent {
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
 		try {
-			studenti.add(new Student("Prezimic", "Imenko", new SimpleDateFormat("dd/MM/yyyy").parse("01/02/1990"), "Bulevar Kralja Petra 100, Novi Kneževac",
-					"0634723723" ,"imenkoprezimic@gmail.com"  , "RA-23023", "2011",
+			studenti.add(new Student("Prezimic", "Imenko", new SimpleDateFormat("dd.MM.yyyy.").parse("01.02.1990."), "Bulevar Kralja Petra 100, Novi Kneževac",
+					"0634723723" ,"imenkoprezimic@gmail.com"  , "RA-230-2001", "2011",
 					GodinaStudiranja.I, StudentStatus.S, (float) 9.32, null, null));
-			studenti.add(new Student("Jerizic", "Neko", new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1992"), "Bulevar Kralja Petra 101, Novi Kneževac",
-					"0647623223" ,"JerizicNeko@gmail.com"  , "RA-20223", "2016",
+			studenti.add(new Student("Jerizic", "Neko", new SimpleDateFormat("dd.MM.yyyy.").parse("01.01.1992."), "Bulevar Kralja Petra 101, Novi Kneževac",
+					"0647623223" ,"JerizicNeko@gmail.com"  , "RA-20-2012", "2016",
 					GodinaStudiranja.II, StudentStatus.S, (float) 9.53, null, null));
-			studenti.add(new Student("Rokvic", "Vladimir", new SimpleDateFormat("dd/MM/yyyy").parse("09/05/1999"), "Bulevar Kralja Petra 123, Novi Kneževac",
-					"064765653" ,"nekonestic@gmail.com"  , "RA69-2018", "2018",
+			studenti.add(new Student("Rokvic", "Vladimir", new SimpleDateFormat("dd.MM.yyyy.").parse("09.05.1999."), "Bulevar Kralja Petra 123, Novi Kneževac",
+					"064765653" ,"nekonestic@gmail.com"  , "RA-69-2018", "2018",
 					GodinaStudiranja.III, StudentStatus.B, (float) 7.32, null, null));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

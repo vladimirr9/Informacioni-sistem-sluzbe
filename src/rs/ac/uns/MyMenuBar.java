@@ -32,7 +32,7 @@ public class MyMenuBar extends JMenuBar
 		//NewFileAction newEntity = new NewFileAction();
 		CloseFileAction closeFile = new CloseFileAction();
 		
-		NewAction newEntity = new NewAction();
+		NewAction newEntity = new NewAction(parent);
 		JMenuItem newActionItem = new JMenuItem(newEntity);
 		
 		newActionItem.setText("New");
