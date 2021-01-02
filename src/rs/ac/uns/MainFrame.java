@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import rs.ac.uns.predmet.view.AbstractTableModelPredmeti;
+import rs.ac.uns.predmet.view.PredmetiJTable;
 import rs.ac.uns.profesor.view.AbstractTableModelProfesori;
 import rs.ac.uns.profesor.view.ProfesoriJTable;
 import rs.ac.uns.student.view.AbstractTableModelStudent;
@@ -19,6 +21,7 @@ public class MainFrame extends JFrame{
 	
 	private JTable tabelaProfesora;
 	private JTable tabelaStudent;
+	private JTable tabelaPredmeta;
 	public static JTabbedPaneMine tabbedPane;
 	private static MainFrame instance = null;
 
@@ -40,10 +43,6 @@ public class MainFrame extends JFrame{
 		setResizable(true);
 		setVisible(true);
 		
-	
-		JPanel panel3=new JPanel();
-		JLabel labela3=new JLabel("TODO: Prikaz entiteta sistema");
-		panel3.add(labela3);
 		
 		MyMenuBar myMenu = new MyMenuBar(this);
 		this.setJMenuBar(myMenu);
@@ -57,7 +56,8 @@ public class MainFrame extends JFrame{
 		JScrollPane scrollPane = new JScrollPane(tabelaProfesora);
 		tabelaStudent = new StudentJTable();
 		JScrollPane scrollPane2 = new JScrollPane(tabelaStudent);
-		
+		tabelaPredmeta=new PredmetiJTable();
+		JScrollPane scrollPane3=new JScrollPane(tabelaPredmeta);
 		
 		
 		tabbedPane=new JTabbedPaneMine();
@@ -65,7 +65,8 @@ public class MainFrame extends JFrame{
 		this.azurirajPrikazStudenta(null, -1);
 		tabbedPane.addTab("Profesori", scrollPane);
 		this.azurirajPrikazProfesora(null, -1);
-		tabbedPane.addTab("Predmeti", panel3);
+		tabbedPane.addTab("Predmeti", scrollPane3);
+		this.azurirajPrikazPredmeta(null, -1);
 		this.add(tabbedPane,BorderLayout.CENTER);
 		
 		validate();
@@ -78,6 +79,11 @@ public class MainFrame extends JFrame{
 	}
 	public void azurirajPrikazStudenta(String akcija, int vrednost) {
 		AbstractTableModelStudent model = (AbstractTableModelStudent) tabelaStudent.getModel();
+		model.fireTableDataChanged();
+		validate();
+	}
+	public void azurirajPrikazPredmeta(String akcija, int vrednost) {
+		AbstractTableModelPredmeti model=(AbstractTableModelPredmeti) tabelaPredmeta.getModel();
 		model.fireTableDataChanged();
 		validate();
 	}

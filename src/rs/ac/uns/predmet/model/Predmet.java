@@ -10,7 +10,7 @@ public class Predmet {
 	private String sifra;
 	private String naziv;
 	private PredmetSemestar semestar;
-	private int godina;
+	private PredmetGodina godina;
 	private Profesor profesor;
 	private int bodovi;
 	List<Student>polozili;
@@ -21,7 +21,7 @@ public class Predmet {
 		
 	}
 
-	public Predmet(String sifra, String naziv, PredmetSemestar semestar, int godina, Profesor profesor, int bodovi,
+	public Predmet(String sifra, String naziv, PredmetSemestar semestar, PredmetGodina godina, Profesor profesor, int bodovi,
 			List<Student> polozili, List<Student> nisuPolozili) {
 		super();
 		this.sifra = sifra;
@@ -32,6 +32,17 @@ public class Predmet {
 		this.bodovi = bodovi;
 		this.polozili = polozili;
 		this.nisuPolozili = nisuPolozili;
+	}
+	
+	
+
+	public Predmet(String sifra, String naziv, PredmetSemestar semestar, PredmetGodina godina, int bodovi) {
+		super();
+		this.sifra = sifra;
+		this.naziv = naziv;
+		this.semestar = semestar;
+		this.godina = godina;
+		this.bodovi = bodovi;
 	}
 
 	public String getSifra() {
@@ -58,11 +69,11 @@ public class Predmet {
 		this.semestar = semestar;
 	}
 
-	public int getGodina() {
+	public PredmetGodina getGodina() {
 		return godina;
 	}
 
-	public void setGodina(int godina) {
+	public void setGodina(PredmetGodina godina) {
 		this.godina = godina;
 	}
 
