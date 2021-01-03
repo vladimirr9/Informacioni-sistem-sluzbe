@@ -82,4 +82,8 @@ public class BazaPredmeta {
 			return null;
 		}
 	}
+	
+	public void dodajPredmet(String sifra, String naziv, PredmetSemestar semestar, PredmetGodina godina, int bodovi) {
+		this.predmeti.add(new Predmet(sifra, naziv, semestar, godina, bodovi));
+	}
 }

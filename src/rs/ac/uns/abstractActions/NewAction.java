@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
 import rs.ac.uns.MainFrame;
+import rs.ac.uns.predmet.view.PredmetDialog;
 import rs.ac.uns.profesor.view.ProfesoriDialog;
 import rs.ac.uns.student.view.StudentDialog;
 
@@ -25,10 +26,13 @@ public class NewAction extends AbstractAction{
 			ProfesoriDialog profesoriDialog=new ProfesoriDialog(parent, "Dodavanje profesora", true);
 			profesoriDialog.setVisible(true);
 		}
-		else if (MainFrame.tabbedPane.getSelectedIndex()==0)
-		{
+		else if (MainFrame.tabbedPane.getSelectedIndex()==0) {
 			StudentDialog studentDialog = new StudentDialog(parent, "Dodavanje studenta", true);
 			studentDialog.setVisible(true);
+		}
+		else if (MainFrame.tabbedPane.getSelectedIndex()==2) {
+			PredmetDialog predmetDialog = new PredmetDialog(parent, "Dodavanje predmeta", true);
+			predmetDialog.setVisible(true);
 		}
 	}
  
