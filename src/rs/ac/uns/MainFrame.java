@@ -87,4 +87,8 @@ public class MainFrame extends JFrame{
 		model.fireTableDataChanged();
 		validate();
 	}
+	
+	public JTable getTabelaProfesora() {
+		return tabelaProfesora;
+	}
 }

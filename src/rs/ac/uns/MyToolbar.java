@@ -36,7 +36,7 @@ public class MyToolbar extends JToolBar {
 		GridBagConstraints gbc=new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
 		
 		NewAction newA=new NewAction(parent);
-		EditAction editA=new EditAction();
+		EditAction editA=new EditAction(parent);
 		DeleteAction delA=new DeleteAction();
 		
 		JButton btn1 = new JButton(newA);

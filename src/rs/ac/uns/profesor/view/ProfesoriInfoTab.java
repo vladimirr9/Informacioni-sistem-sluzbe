@@ -1,11 +1,11 @@
 package rs.ac.uns.profesor.view;
 
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,22 +14,29 @@ import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
+import rs.ac.uns.MainFrame;
 import rs.ac.uns.profesor.controller.ProfesorController;
-import rs.ac.uns.profesor.model.BazaProfesora;
 import rs.ac.uns.profesor.model.Profesor;
 import rs.ac.uns.profesor.model.ProfesorTitula;
 import rs.ac.uns.profesor.model.ProfesorZvanje;
 
-public class ProfesoriDialog extends JDialog {
-	public ProfesoriDialog(Frame parent, String title, boolean modal) {
-		super(parent, title, modal);
+public class ProfesoriInfoTab extends JPanel{
 
-		setSize(400, 400);
-		setLocationRelativeTo(parent);
+	public ProfesoriInfoTab() {
+		super();
+		
+		int row=MainFrame.getInstance().getTabelaProfesora().getSelectedRow();
+		Profesor profesor=ProfesorController.getInstance().getProfesor(row);
+		
+		ProfesoriInfoTab pp=this;
 		
 		GridBagLayout gb=new GridBagLayout();
 		setLayout(gb);
@@ -39,6 +46,7 @@ public class ProfesoriDialog extends JDialog {
 		this.add(label2,gbc);
 		
 		JTextField txtField1=new JTextField();
+		txtField1.setText(profesor.getPrezime());
 		gbc=new GridBagConstraints(1, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField1,gbc);
 		
@@ -47,6 +55,7 @@ public class ProfesoriDialog extends JDialog {
 		this.add(label1,gbc);
 		
 		JTextField txtField2=new JTextField();
+		txtField2.setText(profesor.getIme());
 		gbc=new GridBagConstraints(1, 1, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField2,gbc);
 		
@@ -55,7 +64,9 @@ public class ProfesoriDialog extends JDialog {
 		this.add(label3,gbc);
 		
 		JTextField txtField3=new JTextField();
-		txtField3.setToolTipText("dd.MM.yyyy.");
+		DateFormat dateFormat=new SimpleDateFormat("dd.MM.yyyy.");
+		txtField3.setText(dateFormat.format(profesor.getDatumRodjenja()));
+		txtField3.setToolTipText("dd/mm/yyyy");
 		gbc=new GridBagConstraints(1, 2, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField3,gbc);
 		
@@ -64,6 +75,7 @@ public class ProfesoriDialog extends JDialog {
 		this.add(label4,gbc);
 		
 		JTextField txtField4=new JTextField();
+		txtField4.setText(profesor.getAdresaStanovanja());
 		txtField4.setToolTipText("ulica broj, grad");
 		gbc=new GridBagConstraints(1, 3, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField4,gbc);
@@ -73,6 +85,7 @@ public class ProfesoriDialog extends JDialog {
 		this.add(label5,gbc);
 		
 		JTextField txtField5=new JTextField();
+		txtField5.setText(profesor.getKontaktTelefon());
 		gbc=new GridBagConstraints(1, 4, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField5,gbc);
 		
@@ -81,6 +94,7 @@ public class ProfesoriDialog extends JDialog {
 		this.add(label6,gbc);
 		
 		JTextField txtField6=new JTextField();
+		txtField6.setText(profesor.getEmailAdresa());
 		gbc=new GridBagConstraints(1, 5, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField6,gbc);
 		
@@ -89,6 +103,7 @@ public class ProfesoriDialog extends JDialog {
 		this.add(label7,gbc);
 		
 		JTextField txtField7=new JTextField();
+		txtField7.setText(profesor.getAdresaKancelarije());
 		txtField7.setToolTipText("ulica broj, grad");
 		gbc=new GridBagConstraints(1, 6, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField7,gbc);
@@ -98,6 +113,7 @@ public class ProfesoriDialog extends JDialog {
 		this.add(label8,gbc);
 		
 		JTextField txtField8=new JTextField();
+		txtField8.setText(profesor.getBrojLicneKarte());
 		gbc=new GridBagConstraints(1, 7, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField8,gbc);
 		
@@ -107,6 +123,7 @@ public class ProfesoriDialog extends JDialog {
 		
 	
 		final JComboBox<String> combo = new JComboBox(ProfesorTitula.values());
+		combo.setSelectedItem(profesor.getTitula());
 		gbc=new GridBagConstraints(1, 8, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 112, 0);
 		this.add(combo,gbc);
 		
@@ -116,6 +133,7 @@ public class ProfesoriDialog extends JDialog {
 		
 		
 		final JComboBox<String> combo2 = new JComboBox(ProfesorZvanje.values());
+		combo2.setSelectedItem(profesor.getZvanje());
 		gbc=new GridBagConstraints(1, 9, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 70, 0);
 		this.add(combo2,gbc);
 		
@@ -127,7 +145,7 @@ public class ProfesoriDialog extends JDialog {
 		gbc=new GridBagConstraints(1, 10, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 0, 0);
 		this.add(jbtnOdustani,gbc);
 		
-		jbtnPotvrdi.addActionListener(new ActionListener() {
+	jbtnPotvrdi.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -149,7 +167,7 @@ public class ProfesoriDialog extends JDialog {
 					int ponovljenaLicna=0;
 						
 					for(Profesor p:ProfesorController.getInstance().getProfesori()) {
-							if(p.getBrojLicneKarte().equals(getBrojLicneKarte)) {
+							if(p.getBrojLicneKarte().equals(getBrojLicneKarte) && !p.getBrojLicneKarte().equals(profesor.getBrojLicneKarte())) {
 								ponovljenaLicna=1;
 							}
 						}
@@ -175,7 +193,17 @@ public class ProfesoriDialog extends JDialog {
 					} else if(ponovljenaLicna==1) {JOptionPane.showMessageDialog(null, "Neispravan broj lične karte!");
 					} else {
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());
-					ProfesorController.getInstance().dodajProfesora(getPrezime,getIme,format,getAdresaStanovanja,getKontaktTelefon,getEmailAdresa,getAdresaKancelarije,getBrojLicneKarte,getTitula,getZvanje);
+					profesor.setIme(getIme);
+					profesor.setAdresaKancelarije(getAdresaKancelarije);
+					profesor.setAdresaStanovanja(getAdresaStanovanja);
+					profesor.setBrojLicneKarte(getBrojLicneKarte);
+					profesor.setEmailAdresa(getEmailAdresa);
+					profesor.setKontaktTelefon(getKontaktTelefon);
+					profesor.setPrezime(getPrezime);
+					profesor.setDatumRodjenja(format);
+					profesor.setTitula(getTitula);
+					profesor.setZvanje(getZvanje);
+					MainFrame.getInstance().azurirajPrikazProfesora("Izmena Profesora", -1);
 					}
 				} catch (ParseException e1) {
 					e1.printStackTrace();
@@ -189,10 +217,13 @@ public class ProfesoriDialog extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				JDialog parent1 = (JDialog) SwingUtilities.getWindowAncestor(pp);
+			    parent1.dispose();
 				
 			}
 		});
+		
 	}
-
+	
+	
 }

@@ -31,4 +31,8 @@ private static ProfesorController instance = null;
 	public List<Profesor> getProfesori(){
 		return BazaProfesora.getInstance().getProfesori();
 	}
+	
+	public Profesor getProfesor(int rowIndex) {
+		return BazaProfesora.getInstance().getRow(rowIndex);
+	}
 }

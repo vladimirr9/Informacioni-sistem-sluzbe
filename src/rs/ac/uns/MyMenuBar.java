@@ -49,7 +49,7 @@ public class MyMenuBar extends JMenuBar
 		JMenu mEdit = new JMenu("Edit");				// edit podmeni
 		mEdit.setMnemonic(KeyEvent.VK_E);
 		
-		EditAction editEntity = new EditAction();
+		EditAction editEntity = new EditAction(parent);
 		DeleteAction deleteEntity = new DeleteAction();
 		
 		

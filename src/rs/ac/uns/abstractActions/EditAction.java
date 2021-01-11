@@ -8,20 +8,23 @@ import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
 import rs.ac.uns.MainFrame;
+import rs.ac.uns.profesor.view.ProfesoriEditDialog;
 import rs.ac.uns.student.view.StudentDialog;
 
 public class EditAction extends AbstractAction {
 	
+	private final JFrame parent;
 	
-	public EditAction() {
+	public EditAction(final JFrame parent) {
+		this.parent=parent;
 		putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/*if (MainFrame.tabbedPane.getSelectedIndex()==0) {
-			StudentDialog studentDialog = new StudentDialog(parent, "Dodavanje studenta", true);
-			studentDialog.setVisible(true);
-		}*/
+		if (MainFrame.tabbedPane.getSelectedIndex()==1 && MainFrame.getInstance().getTabelaProfesora().getSelectedRow()!=-1) {
+			ProfesoriEditDialog profesoriEditDialog=new ProfesoriEditDialog(parent, "Izmeni profesora", true);
+			profesoriEditDialog.setVisible(true);
+		}
 		
 	}
 
