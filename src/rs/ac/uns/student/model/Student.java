@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import rs.ac.uns.ocena.model.Ocena;
+import rs.ac.uns.predmet.model.Predmet;
 
 public class Student {
 	private String prezime;
@@ -13,12 +14,12 @@ public class Student {
 	private String kontaktTelefon;
 	private String emailAdresa;
 	private String brojIndeksa;
-	private String godinaUpisa;
+	private int godinaUpisa;
 	private GodinaStudiranja trenutnaGodinaStudija;
 	private StudentStatus status;
 	private float prosecnaOcena;
 	private List<Ocena> polozeniIspiti;
-	private List<String> nepolozeniIspiti;
+	private List<Predmet> nepolozeniIspiti;
 	
 	
 	
@@ -29,8 +30,8 @@ public class Student {
 
 	
 	public Student(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String emailAdresa, String brojIndeksa, String godinaUpisa, GodinaStudiranja trenutnaGodinaStudija, StudentStatus s,
-			float prosecnaOcena, List<Ocena> polozeniIspiti, List<String> nepolozeniIspiti) {
+			String emailAdresa, String brojIndeksa, int godinaUpisa, GodinaStudiranja trenutnaGodinaStudija, StudentStatus s,
+			float prosecnaOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti) {
 		super();
 		this.prezime = prezime;
 		this.ime = ime;
@@ -88,10 +89,10 @@ public class Student {
 	public void setBrojIndeksa(String brojIndeksa) {
 		this.brojIndeksa = brojIndeksa;
 	}
-	public String getGodinaUpisa() {
+	public int getGodinaUpisa() {
 		return godinaUpisa;
 	}
-	public void setGodinaUpisa(String godinaUpisa) {
+	public void setGodinaUpisa(int godinaUpisa) {
 		this.godinaUpisa = godinaUpisa;
 	}
 	public GodinaStudiranja getTrenutnaGodinaStudija() {
@@ -119,10 +120,10 @@ public class Student {
 	public void setPolozeniIspiti(List<Ocena> polozeniIspiti) {
 		this.polozeniIspiti = polozeniIspiti;
 	}
-	public List<String> getNepolozeniIspiti() {
+	public List<Predmet> getNepolozeniIspiti() {
 		return nepolozeniIspiti;
 	}
-	public void setNepolozeniIspiti(List<String> nepolozeniIspiti) {
+	public void setNepolozeniIspiti(List<Predmet> nepolozeniIspiti) {
 		this.nepolozeniIspiti = nepolozeniIspiti;
 	}
 	

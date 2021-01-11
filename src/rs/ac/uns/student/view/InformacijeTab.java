@@ -1,11 +1,11 @@
 package rs.ac.uns.student.view;
 
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,27 +17,29 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
-
+import rs.ac.uns.MainFrame;
 import rs.ac.uns.student.controller.StudentController;
+import rs.ac.uns.student.model.BazaStudent;
 import rs.ac.uns.student.model.GodinaStudiranja;
 import rs.ac.uns.student.model.Student;
 import rs.ac.uns.student.model.StudentStatus;
 
-public class StudentDialog extends JDialog {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6191142424510844845L;
-
-	public StudentDialog(Frame parent, String title, boolean modal) {
-		super(parent, title, modal);
-
-		setSize(400, 400);
-		setLocationRelativeTo(parent);
+public class InformacijeTab extends JPanel {
+	
+	DateFormat format;
+	
+	
+	public InformacijeTab() {
+		super();
+		InformacijeTab si =this;
 		
-		
+		int row = MainFrame.getInstance().getTabelaStudent().convertRowIndexToModel(MainFrame.getInstance().getTabelaStudent().getSelectedRow());
+		System.out.println(row);
+		Student student = BazaStudent.getInstance().getRow(row);
 		
 		GridBagLayout gb=new GridBagLayout();
 		setLayout(gb);
@@ -48,6 +50,7 @@ public class StudentDialog extends JDialog {
 		this.add(label1,gbc);
 		
 		JTextField txtField1=new JTextField();
+		txtField1.setText(student.getIme());
 		gbc=new GridBagConstraints(1, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField1,gbc);
 		
@@ -56,6 +59,7 @@ public class StudentDialog extends JDialog {
 		this.add(label2,gbc);
 		
 		JTextField txtField2 = new JTextField();
+		txtField2.setText(student.getPrezime());
 		gbc=new GridBagConstraints(1, 1, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField2,gbc);
 		
@@ -65,6 +69,8 @@ public class StudentDialog extends JDialog {
 		
 		JTextField txtField3=new JTextField();
 		txtField3.setToolTipText("dd.mm.yyyy.");
+		format = new SimpleDateFormat("dd.MM.yyyy.");
+		txtField3.setText(format.format(student.getDatumRodjenja()));
 		gbc=new GridBagConstraints(1, 2, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField3,gbc);
 		
@@ -75,6 +81,7 @@ public class StudentDialog extends JDialog {
 		
 		JTextField txtField4=new JTextField();
 		txtField4.setToolTipText("ulica broj, grad");
+		txtField4.setText(student.getAdresaStanovanja());
 		gbc=new GridBagConstraints(1, 3, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField4,gbc);
 		
@@ -83,6 +90,7 @@ public class StudentDialog extends JDialog {
 		this.add(label5,gbc);
 		
 		JTextField txtField5=new JTextField();
+		txtField5.setText(student.getKontaktTelefon());
 		gbc=new GridBagConstraints(1, 4, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField5,gbc);
 		
@@ -91,6 +99,7 @@ public class StudentDialog extends JDialog {
 		this.add(label6,gbc);
 		
 		JTextField txtField6=new JTextField();
+		txtField6.setText(student.getEmailAdresa());
 		gbc=new GridBagConstraints(1, 5, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField6,gbc);
 		
@@ -99,6 +108,7 @@ public class StudentDialog extends JDialog {
 		this.add(label7,gbc);
 		
 		JTextField txtField7=new JTextField();
+		txtField7.setText(student.getBrojIndeksa());
 		gbc=new GridBagConstraints(1, 6, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField7,gbc);
 		
@@ -107,6 +117,7 @@ public class StudentDialog extends JDialog {
 		this.add(label8,gbc);
 		
 		JTextField txtField8=new JTextField();
+		txtField8.setText(String.valueOf(student.getGodinaUpisa()));
 		gbc=new GridBagConstraints(1, 7, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField8,gbc);
 		
@@ -123,6 +134,16 @@ public class StudentDialog extends JDialog {
 		valsGS.add("V (peta)");
 		final JComboBox<String> combo = new JComboBox(valsGS.toArray()) ;
 		gbc=new GridBagConstraints(1, 8, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 112, 0);
+		if (student.getTrenutnaGodinaStudija() == GodinaStudiranja.I)
+			combo.setSelectedIndex(0);
+		else if (student.getTrenutnaGodinaStudija() == GodinaStudiranja.II)
+			combo.setSelectedIndex(1);
+		else if (student.getTrenutnaGodinaStudija() == GodinaStudiranja.III)
+			combo.setSelectedIndex(2);
+		else if (student.getTrenutnaGodinaStudija() == GodinaStudiranja.IV)
+			combo.setSelectedIndex(3);
+		else combo.setSelectedIndex(4);
+		
 		this.add(combo,gbc);
 		
 		
@@ -137,6 +158,10 @@ public class StudentDialog extends JDialog {
 		
 		
 		final JComboBox<String> combo2 = new JComboBox(valsStatus.toArray());
+		if (student.getStatus() == StudentStatus.B)
+			combo2.setSelectedIndex(0);
+		else
+			combo2.setSelectedIndex(1);
 		gbc=new GridBagConstraints(1, 9, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 70, 0);
 		this.add(combo2,gbc);
 		
@@ -164,7 +189,7 @@ public class StudentDialog extends JDialog {
 					String emailAdresa=txtField6.getText();
 					String brojIndeksa=txtField7.getText();
 					
-					int godinaUpisa=Integer.parseInt(txtField8.getText());
+					String godinaUpisa=txtField8.getText();
 					
 					GodinaStudiranja godinaStudiranja;
 					if (combo.getSelectedItem().toString().equals("I (prva)"))
@@ -181,7 +206,7 @@ public class StudentDialog extends JDialog {
 					boolean postoji = false;
 					for (Student s : StudentController.getInstance().getStudenti())
 					{
-						if (s.getBrojIndeksa().equals(brojIndeksa))
+						if (s.getBrojIndeksa().equals(brojIndeksa) && !s.getBrojIndeksa().equals(student.getBrojIndeksa()) )
 							postoji = true;
 					}
 					
@@ -208,11 +233,21 @@ public class StudentDialog extends JDialog {
 					} else if (postoji) {
 						JOptionPane.showMessageDialog(null, "Broj indeksa već postoji!");
 					}
-						else if(!Pattern.matches("[0-9]{4}", String.valueOf(godinaUpisa))) {
+						else if(!Pattern.matches("[0-9]{4}", godinaUpisa)) {
 						JOptionPane.showMessageDialog(null, "Neispravno uneta godina upisa!");
 					} else {
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());
-					StudentController.getInstance().dodajStudenta(prezime, ime, format, adresaStanovanja, brojTelefona, emailAdresa, brojIndeksa, godinaUpisa, godinaStudiranja, status, (float)0, null, null);;
+					student.setIme(ime);
+					student.setPrezime(prezime);
+					student.setDatumRodjenja(format);
+					student.setAdresaStanovanja(adresaStanovanja);
+					student.setKontaktTelefon(brojTelefona);
+					student.setEmailAdresa(emailAdresa);
+					student.setBrojIndeksa(brojIndeksa);
+					student.setGodinaUpisa(Integer.parseInt(godinaUpisa));
+					student.setTrenutnaGodinaStudija(godinaStudiranja);
+					student.setS(status);
+					MainFrame.getInstance().azurirajPrikazStudenta("Izmena Studenta", -1);
 					}
 				} catch (ParseException e1) {
 					e1.printStackTrace();
@@ -225,9 +260,13 @@ public class StudentDialog extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				JDialog parent1 = (JDialog) SwingUtilities.getWindowAncestor(si);
+			    parent1.dispose();
 				
 			}
 		});
+		
+		
 	}
+
 }

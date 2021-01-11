@@ -10,6 +10,7 @@ import javax.swing.KeyStroke;
 import rs.ac.uns.MainFrame;
 import rs.ac.uns.profesor.view.ProfesoriEditDialog;
 import rs.ac.uns.student.view.StudentDialog;
+import rs.ac.uns.student.view.StudentEditDialog;
 
 public class EditAction extends AbstractAction {
 	
@@ -24,6 +25,11 @@ public class EditAction extends AbstractAction {
 		if (MainFrame.tabbedPane.getSelectedIndex()==1 && MainFrame.getInstance().getTabelaProfesora().getSelectedRow()!=-1) {
 			ProfesoriEditDialog profesoriEditDialog=new ProfesoriEditDialog(parent, "Izmeni profesora", true);
 			profesoriEditDialog.setVisible(true);
+		}
+		else if (MainFrame.tabbedPane.getSelectedIndex()==0) {
+			//if MainFrame.getInstance().tabbedPane.getTabComponentAt(0).get
+			StudentEditDialog studentEditDialog = new StudentEditDialog(parent, "Izmena studenta", true);
+			studentEditDialog.setVisible(true);
 		}
 		
 	}
