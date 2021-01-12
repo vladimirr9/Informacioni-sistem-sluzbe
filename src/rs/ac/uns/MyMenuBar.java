@@ -50,7 +50,7 @@ public class MyMenuBar extends JMenuBar
 		mEdit.setMnemonic(KeyEvent.VK_E);
 		
 		EditAction editEntity = new EditAction(parent);
-		DeleteAction deleteEntity = new DeleteAction();
+		DeleteAction deleteEntity = new DeleteAction(parent);
 		
 		
 		JMenuItem editItem = new JMenuItem(editEntity);

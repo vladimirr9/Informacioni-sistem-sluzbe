@@ -94,4 +94,8 @@ public class MainFrame extends JFrame{
 	public JTable getTabelaStudent() {
 		return tabelaStudent;
 	}
+	
+	public JTable getTabelaPredmeta() {
+		return tabelaPredmeta;
+	}
 }

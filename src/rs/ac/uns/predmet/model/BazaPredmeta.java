@@ -86,4 +86,13 @@ public class BazaPredmeta {
 	public void dodajPredmet(String sifra, String naziv, PredmetSemestar semestar, PredmetGodina godina, int bodovi) {
 		this.predmeti.add(new Predmet(sifra, naziv, semestar, godina, bodovi));
 	}
+	
+	public void obrisiPredmet(Predmet p) {
+		for(Predmet pp:this.predmeti) {
+			if(pp.equals(p)) {
+				this.predmeti.remove(pp);
+				break;
+			}
+		}
+	}
 }

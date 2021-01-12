@@ -37,7 +37,7 @@ public class MyToolbar extends JToolBar {
 		
 		NewAction newA=new NewAction(parent);
 		EditAction editA=new EditAction(parent);
-		DeleteAction delA=new DeleteAction();
+		DeleteAction delA=new DeleteAction(parent);
 		
 		JButton btn1 = new JButton(newA);
 		btn1.getActionMap().put("newAction", newA);

@@ -7,6 +7,8 @@ import rs.ac.uns.predmet.model.BazaPredmeta;
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.predmet.model.PredmetGodina;
 import rs.ac.uns.predmet.model.PredmetSemestar;
+import rs.ac.uns.profesor.model.BazaProfesora;
+import rs.ac.uns.profesor.model.Profesor;
 
 public class PredmetController {
 	
@@ -32,6 +34,14 @@ private static PredmetController instance = null;
 	
 	public List<Predmet> getPredmeti() {
 		return BazaPredmeta.getInstance().getPredmeti();
+	}
+	
+	public Predmet getPredmet(int rowIndex) {
+		return BazaPredmeta.getInstance().getRow(rowIndex);
+	}
+	
+	public void izbrisiPredmet(Predmet p) {
+		BazaPredmeta.getInstance().obrisiPredmet(p);
 	}
 	
 }
