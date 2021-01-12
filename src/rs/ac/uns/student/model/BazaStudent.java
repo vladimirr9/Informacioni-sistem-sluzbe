@@ -8,6 +8,8 @@ import java.util.List;
 
 import rs.ac.uns.ocena.model.Ocena;
 import rs.ac.uns.predmet.model.Predmet;
+import rs.ac.uns.predmet.model.PredmetGodina;
+import rs.ac.uns.predmet.model.PredmetSemestar;
 
 public class BazaStudent {
 	private static BazaStudent instance = null;
@@ -45,9 +47,11 @@ public class BazaStudent {
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
 		try {
+			List<Predmet>predmetiproba=new ArrayList<Predmet>();
+			predmetiproba.add(new Predmet("E214", "PJISP", PredmetSemestar.ZIMSKI, PredmetGodina.PRVA,9));
 			studenti.add(new Student("Prezimic", "Imenko", new SimpleDateFormat("dd.MM.yyyy.").parse("01.02.1990."), "Bulevar Kralja Petra 100, Novi Kneževac",
 					"0634723723" ,"imenkoprezimic@gmail.com"  , "RA-230-2001", 2011,
-					GodinaStudiranja.I, StudentStatus.S, (float) 9.32, null, null));
+					GodinaStudiranja.I, StudentStatus.S, (float) 9.32, null, predmetiproba));
 			studenti.add(new Student("Jerizic", "Neko", new SimpleDateFormat("dd.MM.yyyy.").parse("01.01.1992."), "Bulevar Kralja Petra 101, Novi Kneževac",
 					"0647623223" ,"JerizicNeko@gmail.com"  , "RA-20-2012", 2016,
 					GodinaStudiranja.II, StudentStatus.S, (float) 9.53, null, null));
