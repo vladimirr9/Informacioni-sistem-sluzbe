@@ -8,6 +8,8 @@ import rs.ac.uns.profesor.model.BazaProfesora;
 import rs.ac.uns.profesor.model.Profesor;
 import rs.ac.uns.profesor.model.ProfesorTitula;
 import rs.ac.uns.profesor.model.ProfesorZvanje;
+import rs.ac.uns.student.model.BazaStudent;
+import rs.ac.uns.student.model.Student;
 
 public class ProfesorController {
 private static ProfesorController instance = null;
@@ -34,5 +36,8 @@ private static ProfesorController instance = null;
 	
 	public Profesor getProfesor(int rowIndex) {
 		return BazaProfesora.getInstance().getRow(rowIndex);
+	}
+	public void izbrisiProfesor(Profesor p) {
+		BazaProfesora.getInstance().obrisiProfesora(p);
 	}
 }

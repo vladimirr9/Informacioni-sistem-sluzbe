@@ -109,7 +109,6 @@ public class BazaStudent {
 		for(Student ss:this.studenti) {
 			if(ss.equals(s)) {
 				this.studenti.remove(ss);
-				System.out.print("A");
 				break;
 			}
 		}

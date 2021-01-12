@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import rs.ac.uns.student.model.Student;
+
 public class BazaProfesora {
 	private static BazaProfesora instance = null;
 
@@ -85,6 +87,14 @@ public class BazaProfesora {
 			String emailAdresa, String adresaKancelarije, String brojLicneKarte, ProfesorTitula titula,
 			ProfesorZvanje zvanje) {
 		this.profesori.add(new Profesor(ime, prezime, datumRodjenja,adresaStanovanja,kontaktTelefon,emailAdresa,adresaKancelarije,brojLicneKarte,titula, zvanje));
+	}
+	public void obrisiProfesora(Profesor p) {
+		for(Profesor pp:this.profesori) {
+			if(pp.equals(p)) {
+				this.profesori.remove(pp);
+				break;
+			}
+		}
 	}
 
 	

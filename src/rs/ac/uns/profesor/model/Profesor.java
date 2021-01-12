@@ -168,6 +168,34 @@ public class Profesor {
 	public void setPredmeti(List<Predmet> predmeti) {
 		this.predmeti = predmeti;
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((brojLicneKarte == null) ? 0 : brojLicneKarte.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Profesor other = (Profesor) obj;
+		if (brojLicneKarte == null) {
+			if (other.brojLicneKarte != null)
+				return false;
+		} else if (!brojLicneKarte.equals(other.brojLicneKarte))
+			return false;
+		return true;
+	}
+	
 	
 	
 }
