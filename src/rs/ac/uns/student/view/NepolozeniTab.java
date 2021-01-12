@@ -3,15 +3,23 @@ package rs.ac.uns.student.view;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class NepolozeniTab extends JPanel {
+import rs.ac.uns.MainFrame;
+import rs.ac.uns.student.model.BazaStudent;
 
-	public NepolozeniTab() {
+public class NepolozeniTab extends JPanel {
+	
+	private NepolozeniTab nt = this;
+	private NepolozeniJTable nepolozeniJTable;
+
+	public NepolozeniTab(int row) {
 		super();
 		
 		GridBagLayout gb=new GridBagLayout();
@@ -34,9 +42,27 @@ public class NepolozeniTab extends JPanel {
 		this.add(jpanel,gbc);
 		
 		gbc=new GridBagConstraints(0, 1, 6, 6, 100, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(30, 30, 0, 30), 0, 0);
-		JTable nepolozeniJTable=new NepolozeniJTable();
+		nepolozeniJTable=new NepolozeniJTable();
 		JScrollPane scrollPane = new JScrollPane(nepolozeniJTable);
 		this.add(scrollPane,gbc);
+		
+		
+		
+		
+		dodaj.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				DodavanjePredmetaStudentu dps = new DodavanjePredmetaStudentu(nt, BazaStudent.getInstance().findStudentByRow(row).getBrojIndeksa());
+				dps.setVisible(true);
+			}
+		});
 	}
+
+	public NepolozeniJTable getNepolozeniJTable() {
+		return nepolozeniJTable;
+	}
+	
+	
 	
 }

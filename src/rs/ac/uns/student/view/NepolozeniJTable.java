@@ -34,4 +34,8 @@ public class NepolozeniJTable extends JTable {
 		}
 		return c;
 	}
+	public void azuriraj() {
+		AbstractTableModelNepolozeni model = (AbstractTableModelNepolozeni) this.getModel();
+		model.fireTableDataChanged();
+	}
 }
