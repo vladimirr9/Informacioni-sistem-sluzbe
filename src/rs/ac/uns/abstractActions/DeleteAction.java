@@ -15,6 +15,8 @@ import rs.ac.uns.MainFrame;
 import rs.ac.uns.predmet.controller.PredmetController;
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.profesor.view.ProfesoriEditDialog;
+import rs.ac.uns.student.controller.StudentController;
+import rs.ac.uns.student.model.Student;
 
 public class DeleteAction extends AbstractAction {
 	private final JFrame parent;
@@ -40,6 +42,23 @@ public DeleteAction(final JFrame parent) {
 				System.out.println(p.getSifra());
 				PredmetController.getInstance().izbrisiPredmet(p);
 				MainFrame.getInstance().azurirajPrikazPredmeta("Brisanje predmeta", -1);
+			}
+		}
+		else if (MainFrame.tabbedPane.getSelectedIndex()==0 && MainFrame.getInstance().getTabelaStudent().getSelectedRow()!=-1) {
+			int reply=JOptionPane.showOptionDialog(parent, 
+			        "Da li ste sigurni da želite da obrišete studenta?", 
+			        "Brisanje studenta", 
+			        JOptionPane.OK_CANCEL_OPTION, 
+			        JOptionPane.INFORMATION_MESSAGE, 
+			        null, 
+			        new String[]{"Da", "Ne"}, 
+			        "default");
+			if(reply==JOptionPane.YES_OPTION) {
+				int row=MainFrame.getInstance().getTabelaStudent().getSelectedRow();
+				Student s=StudentController.getInstance().getStudent(row);
+				System.out.println(s.getBrojIndeksa());
+				StudentController.getInstance().izbrisiStudent(s);
+				MainFrame.getInstance().azurirajPrikazStudenta("Brisanje Studenta", -1);
 			}
 		}
 		

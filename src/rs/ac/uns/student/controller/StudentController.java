@@ -5,6 +5,7 @@ import java.util.List;
 
 import rs.ac.uns.MainFrame;
 import rs.ac.uns.ocena.model.Ocena;
+import rs.ac.uns.predmet.model.BazaPredmeta;
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.student.model.BazaStudent;
 import rs.ac.uns.student.model.GodinaStudiranja;
@@ -51,5 +52,11 @@ private static StudentController instance = null;
 	
 	public List<Student> getStudenti(){
 		return BazaStudent.getInstance().getStudenti();
+	}
+	public Student getStudent(int rowIndex) {
+		return BazaStudent.getInstance().getRow(rowIndex);
+	}
+	public void izbrisiStudent(Student s) {
+		BazaStudent.getInstance().obrisiStudent(s);
 	}
 }

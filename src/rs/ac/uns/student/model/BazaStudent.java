@@ -105,4 +105,13 @@ public class BazaStudent {
 			float prosecnaOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
 		this.studenti.add(new Student(prezime, ime, datumRodjenja, adresaStanovanja, kontaktTelefon, emailAdresa, brojIndeksa, godinaUpisa, trenutnaGodinaStudija, status, prosecnaOcena, polozeniIspiti, nepolozeniIspiti));
 	}
+	public void obrisiStudent(Student s) {
+		for(Student ss:this.studenti) {
+			if(ss.equals(s)) {
+				this.studenti.remove(ss);
+				System.out.print("A");
+				break;
+			}
+		}
+	}
 }
