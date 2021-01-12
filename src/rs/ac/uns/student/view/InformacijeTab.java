@@ -33,11 +33,11 @@ public class InformacijeTab extends JPanel {
 	DateFormat format;
 	
 	
-	public InformacijeTab() {
+	public InformacijeTab(int row) {
 		super();
 		InformacijeTab si =this;
 		
-		int row = MainFrame.getInstance().getTabelaStudent().convertRowIndexToModel(MainFrame.getInstance().getTabelaStudent().getSelectedRow());
+		//int row = MainFrame.getInstance().getTabelaStudent().convertRowIndexToModel(MainFrame.getInstance().getTabelaStudent().getSelectedRow());
 		System.out.println(row);
 		Student student = BazaStudent.getInstance().getRow(row);
 		

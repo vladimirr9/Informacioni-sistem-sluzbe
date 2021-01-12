@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import rs.ac.uns.MainFrame;
+
 public class StudentEditTabbedPane extends JTabbedPane {
 	
 
@@ -14,14 +16,15 @@ public class StudentEditTabbedPane extends JTabbedPane {
 		JPanel informacije = new JPanel();
 		JPanel polozeni = new JPanel();
 		JPanel nepolozeni = new JPanel();
+		int row = MainFrame.getInstance().getTabelaStudent().convertRowIndexToModel(MainFrame.getInstance().getTabelaStudent().getSelectedRow());
 
 		informacije.setLayout(new BorderLayout());
 		this.add(informacije, "Informacije");
-		informacije.add(new InformacijeTab());
+		informacije.add(new InformacijeTab(row));
 
 		polozeni.setLayout(new BorderLayout());
 		this.add(polozeni, "Položeni");
-		//polozeni.add(new PolozeniTab());
+		polozeni.add(new PolozeniTab(row));
 		
 		NepolozeniTab nepolozeniTab=new NepolozeniTab();
 		nepolozeni.setLayout(new BorderLayout());

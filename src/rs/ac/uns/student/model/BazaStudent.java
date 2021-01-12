@@ -48,20 +48,33 @@ public class BazaStudent {
 		this.studenti = new ArrayList<Student>();
 		try {
 			List<Predmet>predmetiproba=new ArrayList<Predmet>();
+			
+			
 			predmetiproba.add(new Predmet("E214", "PJISP", PredmetSemestar.ZIMSKI, PredmetGodina.PRVA,9));
 			studenti.add(new Student("Prezimic", "Imenko", new SimpleDateFormat("dd.MM.yyyy.").parse("01.02.1990."), "Bulevar Kralja Petra 100, Novi Kneževac",
 					"0634723723" ,"imenkoprezimic@gmail.com"  , "RA-230-2001", 2011,
-					GodinaStudiranja.I, StudentStatus.S, (float) 9.32, null, predmetiproba));
+					GodinaStudiranja.I, StudentStatus.S, (float) 9.32, new ArrayList<Ocena>(),predmetiproba));
 			studenti.add(new Student("Jerizic", "Neko", new SimpleDateFormat("dd.MM.yyyy.").parse("01.01.1992."), "Bulevar Kralja Petra 101, Novi Kneževac",
 					"0647623223" ,"JerizicNeko@gmail.com"  , "RA-20-2012", 2016,
-					GodinaStudiranja.II, StudentStatus.S, (float) 9.53, null, null));
+					GodinaStudiranja.II, StudentStatus.S, (float) 9.53, new ArrayList<Ocena>(),new ArrayList<Predmet>()));
 			studenti.add(new Student("Rokvic", "Vladimir", new SimpleDateFormat("dd.MM.yyyy.").parse("09.05.1999."), "Bulevar Kralja Petra 123, Novi Kneževac",
 					"064765653" ,"nekonestic@gmail.com"  , "RA-69-2018", 2018,
-					GodinaStudiranja.III, StudentStatus.B, (float) 7.32, null, null));
+					GodinaStudiranja.III, StudentStatus.B, (float) 7.32, new ArrayList<Ocena>(),new ArrayList<Predmet>()));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public Student getStudentByIndeks(String brojIndeksa) {
+		for (Student s : studenti) {
+			if (s.getBrojIndeksa().equals(brojIndeksa) ) {
+				return s;
+			}
+		}
+		return null;
+	}
+	public Student findStudentByRow(int row) {
+		return studenti.get(row);
 	}
 	
 	
@@ -103,6 +116,38 @@ public class BazaStudent {
 		default:
 			return null;
 		}
+	}
+	public int getESPB(String indeks) {
+		int espb = 0;
+		for (Student s : studenti) {
+			if (s.getBrojIndeksa().equals(indeks)) {
+				for (Ocena o : s.getPolozeniIspiti()) {
+					espb += o.getPredmet().getBodovi();
+				}
+				break;
+			}
+
+		}
+		return espb;
+	}
+	
+	public float getProsek(String indeks)
+	{
+		float prosek = 0;
+		for (Student s : studenti)
+		{
+			if (s.getBrojIndeksa().equals(indeks))
+			for (Ocena o : s.getPolozeniIspiti())
+			{
+				prosek += o.getOcena();
+			}
+			if (s.getPolozeniIspiti().size() != 0)
+			{
+				prosek = prosek / s.getPolozeniIspiti().size();
+			}
+			break;
+		}
+		return prosek;
 	}
 	public void dodajStudenta(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String emailAdresa, String brojIndeksa, int godinaUpisa, GodinaStudiranja trenutnaGodinaStudija, StudentStatus status,
