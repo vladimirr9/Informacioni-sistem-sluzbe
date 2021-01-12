@@ -237,17 +237,9 @@ public class InformacijeTab extends JPanel {
 						JOptionPane.showMessageDialog(null, "Neispravno uneta godina upisa!");
 					} else {
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());
-					student.setIme(ime);
-					student.setPrezime(prezime);
-					student.setDatumRodjenja(format);
-					student.setAdresaStanovanja(adresaStanovanja);
-					student.setKontaktTelefon(brojTelefona);
-					student.setEmailAdresa(emailAdresa);
-					student.setBrojIndeksa(brojIndeksa);
-					student.setGodinaUpisa(Integer.parseInt(godinaUpisa));
-					student.setTrenutnaGodinaStudija(godinaStudiranja);
-					student.setS(status);
-					MainFrame.getInstance().azurirajPrikazStudenta("Izmena Studenta", -1);
+					
+					
+					StudentController.getInstance().editStudent(prezime, ime, format, adresaStanovanja, brojTelefona, emailAdresa, brojIndeksa, Integer.parseInt(godinaUpisa), godinaStudiranja, status, row);
 					}
 				} catch (ParseException e1) {
 					e1.printStackTrace();

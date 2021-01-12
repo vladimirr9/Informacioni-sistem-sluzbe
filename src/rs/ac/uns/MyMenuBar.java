@@ -61,7 +61,7 @@ public class MyMenuBar extends JMenuBar
 		
 		JMenuItem deleteItem = new JMenuItem(deleteEntity);
 		
-		deleteItem.setText("Edit");
+		deleteItem.setText("Delete");
 		deleteItem.setMnemonic(KeyEvent.VK_E);
 		address = "images" + File.separator + "icons"  + File.separator + "delete.png";
 		deleteItem.setIcon( new ImageIcon(address));

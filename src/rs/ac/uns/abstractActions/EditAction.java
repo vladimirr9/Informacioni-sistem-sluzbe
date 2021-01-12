@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 
 import rs.ac.uns.MainFrame;
+import rs.ac.uns.predmet.view.PredmetEditDialog;
 import rs.ac.uns.profesor.view.ProfesoriEditDialog;
 import rs.ac.uns.student.view.StudentDialog;
 import rs.ac.uns.student.view.StudentEditDialog;
@@ -26,10 +27,13 @@ public class EditAction extends AbstractAction {
 			ProfesoriEditDialog profesoriEditDialog=new ProfesoriEditDialog(parent, "Izmeni profesora", true);
 			profesoriEditDialog.setVisible(true);
 		}
-		else if (MainFrame.tabbedPane.getSelectedIndex()==0) {
-			//if MainFrame.getInstance().tabbedPane.getTabComponentAt(0).get
+		else if (MainFrame.tabbedPane.getSelectedIndex()==0 && MainFrame.getInstance().getTabelaStudent().getSelectedRow()!=-1) {
 			StudentEditDialog studentEditDialog = new StudentEditDialog(parent, "Izmena studenta", true);
 			studentEditDialog.setVisible(true);
+		}
+		if (MainFrame.tabbedPane.getSelectedIndex()==2 && MainFrame.getInstance().getTabelaPredmeta().getSelectedRow() != -1) {
+			PredmetEditDialog predmetEditDialog = new PredmetEditDialog(parent, "Izmena predmeta", true);
+			predmetEditDialog.setVisible(true);
 		}
 		
 	}

@@ -43,5 +43,17 @@ private static PredmetController instance = null;
 	public void izbrisiPredmet(Predmet p) {
 		BazaPredmeta.getInstance().obrisiPredmet(p);
 	}
+	public void editPredmet(String sifra, String naziv, PredmetSemestar semestar, PredmetGodina godina, int bodovi, int row)
+	{
+		
+		Predmet predmet = BazaPredmeta.getInstance().getRow(row);
+		predmet.setSifra(sifra);
+		predmet.setNaziv(naziv);
+		predmet.setSemestar(semestar);
+		predmet.setGodina(godina);
+		predmet.setBodovi(bodovi);
+		MainFrame.getInstance().azurirajPrikazPredmeta("Izmena Predmeta", -1);
+		
+	}
 	
 }

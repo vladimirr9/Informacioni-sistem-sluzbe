@@ -31,6 +31,23 @@ private static StudentController instance = null;
 				polozeniIspiti, nepolozeniIspiti);
 		MainFrame.getInstance().azurirajPrikazStudenta("DODAT", -1);
 	}
+	public void editStudent(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String emailAdresa, String brojIndeksa, int godinaUpisa, GodinaStudiranja trenutnaGodinaStudija, StudentStatus status, int row) {
+		
+		Student student = BazaStudent.getInstance().getRow(row);
+		student.setIme(ime);
+		student.setPrezime(prezime);
+		student.setDatumRodjenja(datumRodjenja);
+		student.setAdresaStanovanja(adresaStanovanja);
+		student.setKontaktTelefon(kontaktTelefon);
+		student.setEmailAdresa(emailAdresa);
+		student.setBrojIndeksa(brojIndeksa);
+		student.setGodinaUpisa(godinaUpisa);
+		student.setTrenutnaGodinaStudija(trenutnaGodinaStudija);
+		student.setS(status);
+		MainFrame.getInstance().azurirajPrikazStudenta("Izmena Studenta", -1);
+		
+	}
 	
 	public List<Student> getStudenti(){
 		return BazaStudent.getInstance().getStudenti();
