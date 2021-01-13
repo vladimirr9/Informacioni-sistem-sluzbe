@@ -241,7 +241,27 @@ public class PredmetInformacijeTab  extends JPanel {
 
 		});
 		
-		
+		minus.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                int reply=JOptionPane.showOptionDialog(null, 
+                        "Da li ste sigurni?", 
+                        "Ukloni Profesora", 
+                        JOptionPane.OK_CANCEL_OPTION, 
+                        JOptionPane.INFORMATION_MESSAGE, 
+                        null, 
+                        new String[]{"Potvrdi", "Odustani"}, 
+                        "default");
+                if(reply==JOptionPane.YES_OPTION) {
+                    txtField4.setText("");
+                    plus.setEnabled(true);
+                    minus.setEnabled(false);
+                    tekuciProfesor = null;
+                        
+                    }
+            }
+        });
 		
 		
 	}
