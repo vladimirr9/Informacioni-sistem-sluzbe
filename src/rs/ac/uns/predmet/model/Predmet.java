@@ -1,11 +1,12 @@
 package rs.ac.uns.predmet.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import rs.ac.uns.profesor.model.Profesor;
 import rs.ac.uns.student.model.Student;
 
-public class Predmet {
+public class Predmet implements Serializable {
 	
 	private String sifra;
 	private String naziv;

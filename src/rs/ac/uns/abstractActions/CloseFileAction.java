@@ -8,6 +8,8 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import rs.ac.uns.data.Serialization;
+
 public class CloseFileAction extends AbstractAction {
 
 	private String address;
@@ -26,6 +28,9 @@ public class CloseFileAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		Serialization.getInstance().BazaStudenataSerialization();
+		Serialization.getInstance().BazaProfesoraSerialization();
+		Serialization.getInstance().BazaPredmetaSerialization();
+		Serialization.getInstance().BazaOcenaSerialization();
 	}
 }

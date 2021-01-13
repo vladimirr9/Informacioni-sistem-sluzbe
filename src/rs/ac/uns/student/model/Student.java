@@ -1,5 +1,6 @@
 package rs.ac.uns.student.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 import rs.ac.uns.ocena.model.Ocena;
 import rs.ac.uns.predmet.model.Predmet;
 
-public class Student {
+public class Student implements Serializable {
 	private String prezime;
 	private String ime;
 	private Date datumRodjenja;

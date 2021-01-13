@@ -1,11 +1,12 @@
 package rs.ac.uns.ocena.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.student.model.Student;
 
-public class Ocena {
+public class Ocena implements Serializable {
 
 	private Student student;
 	Predmet predmet; 

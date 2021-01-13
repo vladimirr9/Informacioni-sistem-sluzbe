@@ -3,6 +3,8 @@ package rs.ac.uns;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import rs.ac.uns.data.Serialization;
 import rs.ac.uns.ocena.view.AbstractTableOcena;
 import rs.ac.uns.ocena.view.OcenaJTable;
 import rs.ac.uns.predmet.view.AbstractTableModelPredmeti;
@@ -72,6 +75,58 @@ public class MainFrame extends JFrame{
 		this.add(tabbedPane,BorderLayout.CENTER);
 		
 		validate();
+		
+addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+				Serialization.getInstance().BazaStudenataSerialization();
+				Serialization.getInstance().BazaProfesoraSerialization();
+				Serialization.getInstance().BazaPredmetaSerialization();
+				Serialization.getInstance().BazaOcenaSerialization();
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				Serialization.getInstance().BazaStudenataSerialization();
+				Serialization.getInstance().BazaProfesoraSerialization();
+				Serialization.getInstance().BazaPredmetaSerialization();
+				Serialization.getInstance().BazaOcenaSerialization();
+				
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 	}
 	
 	public void azurirajPrikazProfesora(String akcija, int vrednost) {

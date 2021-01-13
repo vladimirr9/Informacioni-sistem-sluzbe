@@ -1,12 +1,13 @@
 package rs.ac.uns.profesor.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import rs.ac.uns.predmet.model.Predmet;
 
-public class Profesor {
+public class Profesor implements Serializable {
 	
 	private String prezime;
 	private String ime;
