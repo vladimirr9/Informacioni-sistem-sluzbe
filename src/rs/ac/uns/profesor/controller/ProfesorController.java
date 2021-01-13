@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import rs.ac.uns.MainFrame;
+import rs.ac.uns.predmet.controller.PredmetController;
+import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.profesor.model.BazaProfesora;
 import rs.ac.uns.profesor.model.Profesor;
 import rs.ac.uns.profesor.model.ProfesorTitula;
@@ -39,6 +41,11 @@ private static ProfesorController instance = null;
 		return BazaProfesora.getInstance().getRow(rowIndex);
 	}
 	public void izbrisiProfesor(Profesor p) {
+		for (Predmet pr : PredmetController.getInstance().getPredmeti()) {
+			if (pr.getProfesor() == p) {
+				pr.setProfesor(null);
+			}
+		}
 		BazaProfesora.getInstance().obrisiProfesora(p);
 	}
 	

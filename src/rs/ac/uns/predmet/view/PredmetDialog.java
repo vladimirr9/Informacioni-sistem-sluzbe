@@ -15,6 +15,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import rs.ac.uns.predmet.controller.PredmetController;
 import rs.ac.uns.predmet.model.Predmet;
@@ -31,6 +33,10 @@ public class PredmetDialog extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 6093839239688325639L;
+	
+	private JTextField txtField3;
+	private JTextField txtField1;
+	private JButton jbtnPotvrdi;
 
 	public PredmetDialog(Frame parent, String title, boolean modal) {
 		
@@ -44,13 +50,46 @@ public class PredmetDialog extends JDialog {
 		setLayout(gb);
 		GridBagConstraints gbc;
 		
+		
+		class MyDocListener implements DocumentListener
+		  {
+			
+		 
+		
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				// TODO Auto-generated method stub
+				provera();
+			}
+
+
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				// TODO Auto-generated method stub
+				provera();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				// TODO Auto-generated method stub
+				provera();
+			}
+		 
+		  }
+		
+		
+		DocumentListener myDocumentListener=new MyDocListener();
+		
+		
 		gbc=new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
 		JLabel label1 = new JLabel("Šifra Predmeta*");
 		this.add(label1,gbc);
 		
-		JTextField txtField1=new JTextField();
+		txtField1=new JTextField();
 		gbc=new GridBagConstraints(1, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField1,gbc);
+		txtField1.getDocument().addDocumentListener(myDocumentListener);
 		
 		gbc=new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
 		JLabel label2 = new JLabel("Naziv Predmeta*");
@@ -64,9 +103,10 @@ public class PredmetDialog extends JDialog {
 		JLabel label3=new JLabel("Broj ESPB bodova*");
 		this.add(label3,gbc);
 		
-		JTextField txtField3=new JTextField();
+		txtField3=new JTextField();
 		gbc=new GridBagConstraints(1, 2, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 225, 0);
 		this.add(txtField3,gbc);
+		txtField3.getDocument().addDocumentListener(myDocumentListener);
 		
 		gbc=new GridBagConstraints(0, 3, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
 		JLabel label4=new JLabel("Godina na kojoj se predmet izvodi*");
@@ -98,9 +138,10 @@ public class PredmetDialog extends JDialog {
 		
 		
 		
-		JButton jbtnPotvrdi=new JButton("Potvrdi");
+		jbtnPotvrdi=new JButton("Potvrdi");
 		gbc=new GridBagConstraints(0, 10, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(5, 0, 0, 0), 0, 0);
 		this.add(jbtnPotvrdi,gbc);
+		jbtnPotvrdi.setEnabled(false);
 		
 		JButton jbtnOdustani=new JButton("Odustani");
 		gbc=new GridBagConstraints(1, 10, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 0, 0);
@@ -129,26 +170,18 @@ public class PredmetDialog extends JDialog {
 				
 				
 				
-				boolean postoji = false;
-				for (Predmet p : PredmetController.getInstance().getPredmeti())
-				{
-					if (p.getSifra().equals(sifraPredmeta))
-						postoji = true;
-				}
+				
 				PredmetSemestar predmetSemestar;
 				if (combo2.getSelectedItem().toString().equals("Zimski"))
 					 predmetSemestar = PredmetSemestar.ZIMSKI;
 				else
 					predmetSemestar = PredmetSemestar.LETNJI;
 				
-				 if(!Pattern.matches("[0-9]+", bodoviStr)) {
-					JOptionPane.showMessageDialog(null, "Neispravno unet broj bodova!");
-				} else if (postoji) {
-					JOptionPane.showMessageDialog(null, "Predmet sa tom šifrom već postoji!");
-				} else {
+				 {
 					
 					int bodovi = Integer.parseInt(bodoviStr);
 					PredmetController.getInstance().dodajPredmet(sifraPredmeta, nazivPredmeta, predmetSemestar, predmetGodina, bodovi);
+					provera();
 				}
 				
 				
@@ -168,6 +201,26 @@ public class PredmetDialog extends JDialog {
 		});
 		
 		
+		
+		
+	}
+	public void provera() {
+		String broj = txtField3.getText();
+		String sifra = txtField1.getText();
+		
+		Boolean postoji = false;
+		for (Predmet p : PredmetController.getInstance().getPredmeti())
+		{
+			if (p.getSifra().equals(sifra))
+				postoji = true;
+		}
+		
+		if((Pattern.matches("[0-9]+", broj) && !postoji))
+		{
+			jbtnPotvrdi.setEnabled(true);
+		}else {
+			jbtnPotvrdi.setEnabled(false);
+		}
 	}
 
 }

@@ -44,7 +44,7 @@ public class AboutHelpAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String text = "Verzija: 1.0\n" + message;
+		String text = "Verzija: 1.0.3\n" + message;
 		JOptionPane.showMessageDialog(parent, text, "About", JOptionPane.INFORMATION_MESSAGE);
 	}
 

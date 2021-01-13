@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import rs.ac.uns.MainFrame;
 import rs.ac.uns.predmet.controller.PredmetController;
@@ -36,14 +38,53 @@ public class PredmetInformacijeTab  extends JPanel {
 	private PredmetInformacijeTab pt;
 	private JTextField txtField4; //za profesora
 	private JButton plus;
+	private JTextField txtField3;
+	private JTextField txtField1;
+	private JButton btnPotvrdi;
 	
 	public PredmetInformacijeTab()
 	{
 		super();
 		
 		
+		
 		//setSize(600, 300);
 		PredmetInformacijeTab pi =this;
+		
+		class MyDocListener implements DocumentListener
+		  {
+			
+		 
+		
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				// TODO Auto-generated method stub
+				provera();
+			}
+
+
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				// TODO Auto-generated method stub
+				provera();
+			}
+
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				// TODO Auto-generated method stub
+				provera();
+			}
+		 
+		  }
+		
+		
+		DocumentListener myDocumentListener=new MyDocListener();
+		
+		
+		
+		
+		
 		
 		int row = MainFrame.getInstance().getTabelaPredmeta().convertRowIndexToModel(MainFrame.getInstance().getTabelaPredmeta().getSelectedRow());
 		Predmet predmet = BazaPredmeta.getInstance().getRow(row);
@@ -57,10 +98,11 @@ public class PredmetInformacijeTab  extends JPanel {
 		JLabel label1 = new JLabel("Šifra Predmeta*");
 		this.add(label1,gbc);
 		
-		JTextField txtField1=new JTextField();
+		txtField1=new JTextField();
 		txtField1.setText(predmet.getSifra());
 		gbc=new GridBagConstraints(1, 0, 3, 1, 100, 0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(5, 30, 0, 10), 225, 0);
 		this.add(txtField1,gbc);
+		txtField1.getDocument().addDocumentListener(myDocumentListener);
 		
 		gbc=new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
 		JLabel label2 = new JLabel("Naziv Predmeta*");
@@ -75,10 +117,11 @@ public class PredmetInformacijeTab  extends JPanel {
 		JLabel label3=new JLabel("Broj ESPB bodova*");
 		this.add(label3,gbc);
 		
-		JTextField txtField3=new JTextField();
+		txtField3=new JTextField();
 		txtField3.setText(String.valueOf(predmet.getBodovi()));
 		gbc=new GridBagConstraints(1, 2, 3, 1, 100, 0, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, new Insets(5, 30, 0, 10), 225, 0);
 		this.add(txtField3,gbc);
+		txtField3.getDocument().addDocumentListener(myDocumentListener);
 		
 		gbc=new GridBagConstraints(0, 3, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0);
 		JLabel label4=new JLabel("Godina na kojoj se predmet izvodi*");
@@ -150,9 +193,10 @@ public class PredmetInformacijeTab  extends JPanel {
 			txtField4.setText(predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime());
 		}
 		
-		JButton btnPotvrdi=new JButton("Potvrdi");
+		btnPotvrdi=new JButton("Potvrdi");
 		gbc=new GridBagConstraints(0, 10, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(20, 0, 0, 0), 0, 0);
 		this.add(btnPotvrdi,gbc);
+		//btnPotvrdi.setEnabled(false);
 		
 		JButton btnOdustani=new JButton("Odustani");
 		gbc=new GridBagConstraints(1, 10, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(20, 30, 0, 0), 0, 0);
@@ -181,26 +225,18 @@ public class PredmetInformacijeTab  extends JPanel {
 				
 				
 				
-				boolean postoji = false;
-				for (Predmet p : PredmetController.getInstance().getPredmeti())
-				{
-					if (p.getSifra().equals(sifraPredmeta) && !p.getSifra().equals(predmet.getSifra()))
-						postoji = true;
-				}
+				
 				PredmetSemestar predmetSemestar;
 				if (combo2.getSelectedItem().toString().equals("Zimski"))
 					 predmetSemestar = PredmetSemestar.ZIMSKI;
 				else
 					predmetSemestar = PredmetSemestar.LETNJI;
 				
-				 if(!Pattern.matches("[0-9]+", bodoviStr)) {
-					JOptionPane.showMessageDialog(null, "Neispravno unet broj bodova!");
-				} else if (postoji) {
-					JOptionPane.showMessageDialog(null, "Predmet sa tom šifrom već postoji!");
-				} else {
+				  {
 					
 					int bodovi = Integer.parseInt(bodoviStr);
 					PredmetController.getInstance().editPredmet(sifraPredmeta, nazivPredmeta, predmetSemestar, predmetGodina, bodovi, row);
+					provera();
 					predmet.setProfesor(tekuciProfesor);
 					if (tekuciProfesor != null && tekuciProfesor != profesor) {
 						tekuciProfesor.getPredmeti().add(predmet);
@@ -277,6 +313,24 @@ public class PredmetInformacijeTab  extends JPanel {
 	public void setTekuciProfesor(Profesor tekProf) {
 		tekuciProfesor = tekProf;
 		
+	}
+	public void provera() {
+		String broj = txtField3.getText();
+		String sifra = txtField1.getText();
+		
+		Boolean postoji = false;
+		for (Predmet p : PredmetController.getInstance().getPredmeti())
+		{
+			if (p.getSifra().equals(sifra) && !p.getSifra().equals(sifra))
+				postoji = true;
+		}
+		
+		if((Pattern.matches("[0-9]+", broj) && !postoji))
+		{
+			btnPotvrdi.setEnabled(true);
+		}else {
+			btnPotvrdi.setEnabled(false);
+		}
 	}
 	
 

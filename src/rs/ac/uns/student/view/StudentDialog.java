@@ -232,41 +232,13 @@ public class StudentDialog extends JDialog {
 						 godinaStudiranja = GodinaStudiranja.IV;
 					else godinaStudiranja = GodinaStudiranja.V;
 					
-					
-					/*boolean postoji = false;
-					for (Student s : StudentController.getInstance().getStudenti())
-					{
-						if (s.getBrojIndeksa().equals(brojIndeksa))
-							postoji = true;
-					}*/
-					
 
 					StudentStatus status;
 					if (combo2.getSelectedItem().toString().equals("Budžet"))
 						status = StudentStatus.B;
 					else
 						status = StudentStatus.S;
-					/*
-					if(!Pattern.matches("([a-zA-ZšđčćžŠĐČĆŽ]+[\\s]*)+", ime)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneto ime!");
-					} 
-					else if(!Pattern.matches("([a-zA-ZšđčćžŠĐČĆŽ]+[\\s]*)+", prezime)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneto prezime!");
-					} 
-					else if(!Pattern.matches("[0-9]{1,2}[.][0-9]{1,2}[.][0-9]{4}[.]", txtField3.getText())) {
-						JOptionPane.showMessageDialog(null, "Neispravan datum!\n Format: dd.mm.yyyy.");
-					} else if(!Pattern.matches("([\\wšđčćžŠĐČĆŽ]+[\\s]+)+[0-9]+[\\s]*,[\\s]*([\\wšđčćžŠĐČĆŽ]+[\\s]*)+", adresaStanovanja)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneta adresa stanovanja!\n Format: ulica broj, grad");
-					} else if(!Pattern.matches("[+]?[0-9]+", brojTelefona)) {
-						JOptionPane.showMessageDialog(null, "Neispravno unet broj telefona!");
-					} else if(!Pattern.matches("^(.+)@(.+)$", emailAdresa)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneta email adresa!");
-					} else if (postoji) {
-						JOptionPane.showMessageDialog(null, "Broj indeksa već postoji!");
-					}
-						else if(!Pattern.matches("[0-9]{4}", String.valueOf(godinaUpisa))) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneta godina upisa!");
-					} else*/ {
+					{
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());
 					StudentController.getInstance().dodajStudenta(prezime, ime, format, adresaStanovanja, brojTelefona, emailAdresa, brojIndeksa, godinaUpisa, godinaStudiranja, status);;
 					provera();

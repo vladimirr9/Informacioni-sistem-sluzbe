@@ -220,7 +220,7 @@ public class InformacijeTab extends JPanel {
 		btnPotvrdi=new JButton("Potvrdi");
 		gbc=new GridBagConstraints(0, 10, 1, 1, 0, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(5, 0, 0, 0), 0, 0);
 		this.add(btnPotvrdi,gbc);
-		btnPotvrdi.setEnabled(false);
+		//btnPotvrdi.setEnabled(false);
 		
 		JButton btnOdustani=new JButton("Odustani");
 		gbc=new GridBagConstraints(1, 10, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(5, 30, 0, 0), 0, 0);
@@ -269,26 +269,7 @@ public class InformacijeTab extends JPanel {
 						status = StudentStatus.B;
 					else
 						status = StudentStatus.S;
-					if(!Pattern.matches("([a-zA-ZšđčćžŠĐČĆŽ]+[\\s]*)+", ime)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneto ime!");
-					} 
-					else if(!Pattern.matches("([a-zA-ZšđčćžŠĐČĆŽ]+[\\s]*)+", prezime)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneto prezime!");
-					} 
-					else if(!Pattern.matches("[0-9]{1,2}[.][0-9]{1,2}[.][0-9]{4}[.]", txtField3.getText())) {
-						JOptionPane.showMessageDialog(null, "Neispravan datum!\n Format: dd.mm.yyyy.");
-					} else if(!Pattern.matches("([\\wšđčćžŠĐČĆŽ]+[\\s]+)+[0-9]+[\\s]*,[\\s]*([\\wšđčćžŠĐČĆŽ]+[\\s]*)+", adresaStanovanja)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneta adresa stanovanja!\n Format: ulica broj, grad");
-					} else if(!Pattern.matches("[+]?[0-9]+", brojTelefona)) {
-						JOptionPane.showMessageDialog(null, "Neispravno unet broj telefona!");
-					} else if(!Pattern.matches("^(.+)@(.+)$", emailAdresa)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneta email adresa!");
-					} else if (postoji) {
-						JOptionPane.showMessageDialog(null, "Broj indeksa već postoji!");
-					}
-						else if(!Pattern.matches("[0-9]{4}", godinaUpisa)) {
-						JOptionPane.showMessageDialog(null, "Neispravno uneta godina upisa!");
-					} else {
+					{
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());
 					
 					
