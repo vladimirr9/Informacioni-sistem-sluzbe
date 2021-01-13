@@ -14,6 +14,7 @@ public class PredmetiJTable extends JTable {
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelPredmeti());
+		this.setAutoCreateRowSorter(true);
 	}
 
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
