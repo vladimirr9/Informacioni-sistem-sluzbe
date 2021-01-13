@@ -1,5 +1,9 @@
 package rs.ac.uns.ocena.controller;
 
+import java.util.List;
+
+import rs.ac.uns.ocena.model.BazaOcena;
+import rs.ac.uns.ocena.model.Ocena;
 
 public class OcenaController {
 private static OcenaController instance = null;
@@ -12,4 +16,11 @@ private static OcenaController instance = null;
 	}
 	
 	private OcenaController() {}
+	
+	public void dodajOcenu(Ocena oc) {
+		List<Ocena>lista;
+		lista=BazaOcena.getInstance().getOcene();
+		lista.add(oc);
+		BazaOcena.getInstance().setOcene(lista);
+	}
 }

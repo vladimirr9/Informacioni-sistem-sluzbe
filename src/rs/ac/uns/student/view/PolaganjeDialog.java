@@ -21,6 +21,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import rs.ac.uns.MainFrame;
+import rs.ac.uns.ocena.controller.OcenaController;
 import rs.ac.uns.ocena.model.Ocena;
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.profesor.model.ProfesorTitula;
@@ -145,7 +146,9 @@ public class PolaganjeDialog extends JDialog {
 				try {
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(jtxt3.getText());
 					BazaStudent.getInstance().ukloniPredmet(st.getBrojIndeksa(), parent.getNepolozeniJTable());
-					BazaStudent.getInstance().dodajOcenu(st.getBrojIndeksa(), new Ocena(st,p,(int)combo.getSelectedItem(),format));
+					Ocena oc=new Ocena(st,p,(int)combo.getSelectedItem(),format);
+					BazaStudent.getInstance().dodajOcenu(st.getBrojIndeksa(), oc);
+					OcenaController.getInstance().dodajOcenu(oc);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
