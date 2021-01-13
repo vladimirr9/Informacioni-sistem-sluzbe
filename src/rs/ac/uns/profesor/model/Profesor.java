@@ -1,5 +1,6 @@
 package rs.ac.uns.profesor.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class Profesor {
 		this.brojLicneKarte = brojLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
+		this.predmeti=new ArrayList<Predmet>();
 	}
 
 
