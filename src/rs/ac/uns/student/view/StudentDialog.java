@@ -212,7 +212,7 @@ public class StudentDialog extends JDialog {
 						JOptionPane.showMessageDialog(null, "Neispravno uneta godina upisa!");
 					} else {
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());
-					StudentController.getInstance().dodajStudenta(prezime, ime, format, adresaStanovanja, brojTelefona, emailAdresa, brojIndeksa, godinaUpisa, godinaStudiranja, status, (float)0, null, null);;
+					StudentController.getInstance().dodajStudenta(prezime, ime, format, adresaStanovanja, brojTelefona, emailAdresa, brojIndeksa, godinaUpisa, godinaStudiranja, status);;
 					}
 				} catch (ParseException e1) {
 					e1.printStackTrace();

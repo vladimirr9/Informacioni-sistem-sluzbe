@@ -1,5 +1,6 @@
 package rs.ac.uns.student.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,6 +48,28 @@ public class Student {
 		this.polozeniIspiti = polozeniIspiti;
 		this.nepolozeniIspiti = nepolozeniIspiti;
 	}
+	
+	
+	public Student(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String emailAdresa, String brojIndeksa, int godinaUpisa, GodinaStudiranja trenutnaGodinaStudija,
+			StudentStatus status) {
+		super();
+		this.prezime = prezime;
+		this.ime = ime;
+		this.datumRodjenja = datumRodjenja;
+		this.adresaStanovanja = adresaStanovanja;
+		this.kontaktTelefon = kontaktTelefon;
+		this.emailAdresa = emailAdresa;
+		this.brojIndeksa = brojIndeksa;
+		this.godinaUpisa = godinaUpisa;
+		this.trenutnaGodinaStudija = trenutnaGodinaStudija;
+		this.status = status;
+		this.prosecnaOcena = (float) 0;
+		this.polozeniIspiti = new ArrayList<Ocena>();
+		this.nepolozeniIspiti = new ArrayList<Predmet>();
+	}
+
+
 	public String getPrezime() {
 		return prezime;
 	}

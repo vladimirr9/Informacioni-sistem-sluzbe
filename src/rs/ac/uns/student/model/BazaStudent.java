@@ -169,9 +169,8 @@ public class BazaStudent {
 		return prosek;
 	}
 	public void dodajStudenta(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String emailAdresa, String brojIndeksa, int godinaUpisa, GodinaStudiranja trenutnaGodinaStudija, StudentStatus status,
-			float prosecnaOcena, List<Ocena> polozeniIspiti, List<Predmet> nepolozeniIspiti)  {
-		this.studenti.add(new Student(prezime, ime, datumRodjenja, adresaStanovanja, kontaktTelefon, emailAdresa, brojIndeksa, godinaUpisa, trenutnaGodinaStudija, status, prosecnaOcena, polozeniIspiti, nepolozeniIspiti));
+			String emailAdresa, String brojIndeksa, int godinaUpisa, GodinaStudiranja trenutnaGodinaStudija, StudentStatus status)  {
+		this.studenti.add(new Student(prezime, ime, datumRodjenja, adresaStanovanja, kontaktTelefon, emailAdresa, brojIndeksa, godinaUpisa, trenutnaGodinaStudija, status));
 	}
 	public void obrisiStudent(Student s) {
 		for(Student ss:this.studenti) {
