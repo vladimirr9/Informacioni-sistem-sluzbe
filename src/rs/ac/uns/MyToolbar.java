@@ -30,6 +30,7 @@ import javax.swing.table.TableRowSorter;
 import rs.ac.uns.abstractActions.DeleteAction;
 import rs.ac.uns.abstractActions.EditAction;
 import rs.ac.uns.abstractActions.NewAction;
+import rs.ac.uns.predmet.view.AbstractTableModelPredmeti;
 import rs.ac.uns.profesor.view.AbstractTableModelProfesori;
 
 public class MyToolbar extends JToolBar {
@@ -102,7 +103,7 @@ public class MyToolbar extends JToolBar {
 					final TableRowSorter< AbstractTableModelProfesori> sorter = new TableRowSorter< AbstractTableModelProfesori>(model);
 					MainFrame.getInstance().getTabelaProfesora().setRowSorter(sorter);
 					if(delovi.length==1) {
-					sorter.setRowFilter(RowFilter.regexFilter("^(?i)" + unesenTekst,1));
+					sorter.setRowFilter(RowFilter.regexFilter("(?i)" + unesenTekst,1));
 					} else if(delovi.length==2) {
 						 List<RowFilter<Object, Object>> filteri = new ArrayList<RowFilter<Object, Object>>(2);
 			                filteri.add(RowFilter.regexFilter("(?i)" + delovi[0], 1));
@@ -110,6 +111,16 @@ public class MyToolbar extends JToolBar {
 			                RowFilter filter=RowFilter.andFilter(filteri);
 			                sorter.setRowFilter(filter);
 					}
+				} else if(MainFrame.tabbedPane.getSelectedIndex()==2)   {
+					String unesenTekst=txtField.getText();
+					String delovi[]=unesenTekst.split(" ");
+					AbstractTableModelPredmeti model = (AbstractTableModelPredmeti) MainFrame.getInstance().getTabelaPredmeta().getModel();
+					final TableRowSorter< AbstractTableModelPredmeti> sorter = new TableRowSorter< AbstractTableModelPredmeti>(model);
+					MainFrame.getInstance().getTabelaPredmeta().setRowSorter(sorter);
+					if(delovi.length==1) {
+					sorter.setRowFilter(RowFilter.regexFilter("(?i)" + unesenTekst,1));
+					}
+					
 				}
 				
 			}
