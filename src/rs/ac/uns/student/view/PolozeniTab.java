@@ -84,7 +84,7 @@ public class PolozeniTab extends JPanel {
 					        "default");
 					if(reply==JOptionPane.YES_OPTION) {
 						StudentController.getInstance().ponistiOcenu(student.getBrojIndeksa(), parent.getNepolozeniJTable());
-						updateLabele(s, prosekL, espbL);
+						updateLabele(s);
 						validate();
 							
 						}
@@ -98,11 +98,11 @@ public class PolozeniTab extends JPanel {
 		
 	}
 	
-	public static void updateLabele(Student s, JLabel prosekL, JLabel espbL) {
+	public static void updateLabele(Student s) {
 
-		//float prosek = BazaStudent.getInstance().getProsek(s.getBrojIndeksa()); 
+		
 		float prosek = BazaStudent.getInstance().getProsek(s); 
-		System.out.println(s.getBrojIndeksa() +"  " + s.getPolozeniIspiti().size());
+		
 		
 		
 																														

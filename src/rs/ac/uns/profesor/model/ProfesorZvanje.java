@@ -23,9 +23,9 @@ public enum ProfesorZvanje {
 	          return "Docent";
 	      }
 	  },
-	  VANDREDNI_PROFESOR {
+	  VANREDNI_PROFESOR {
 	      public String toString() {
-	          return "Vandredni profesor";
+	          return "Vanredni profesor";
 	      }
 	  },
 	  REDOVNI_PROFESOR {

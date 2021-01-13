@@ -6,8 +6,8 @@ public enum PredmetGodina {
 	PRVA("I(prva)",1),
 	DRUGA("II(druga)",2),
 	TRECA("III(treća)",3),
-	CETVRTA("IV(četvrta",4),
-	PETA("peta",5);
+	CETVRTA("IV(četvrta)",4),
+	PETA("V(peta)",5);
 	
 	private final String nazivGodine;
 	private final int brojGodine;

@@ -182,7 +182,7 @@ public class ProfesoriInfoTab extends JPanel{
 						JOptionPane.showMessageDialog(null, "Neispravan datum!\nFormat: dd.mm.yyyy.");
 					} else if(!Pattern.matches("([\\wšđčćžŠĐČĆŽ]+[\\s]+)+[0-9]+[\\s]*,[\\s]*([\\wšđčćžŠĐČĆŽ]+[\\s]*)+", getAdresaStanovanja)) {
 						JOptionPane.showMessageDialog(null, "Neispravna adresa stanovanja!\nFormat: ulica broj, grad");
-					} else if(!Pattern.matches("[+]?[0-9]+", getKontaktTelefon)) {
+					} else if(!Pattern.matches("[0-9]{3}[/][0-9]+[-][0-9]+", getKontaktTelefon)) {
 						JOptionPane.showMessageDialog(null, "Neispravan kontakt telefon!");
 					} else if(!Pattern.matches("^(.+)@(.+)$", getEmailAdresa)) {
 						JOptionPane.showMessageDialog(null, "Neispravna email adresa!");

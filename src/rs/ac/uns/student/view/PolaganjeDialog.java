@@ -149,6 +149,8 @@ public class PolaganjeDialog extends JDialog {
 					Ocena oc=new Ocena(st,p,(int)combo.getSelectedItem(),format);
 					BazaStudent.getInstance().dodajOcenu(st.getBrojIndeksa(), oc);
 					OcenaController.getInstance().dodajOcenu(oc);
+					PolozeniTab.updateLabele(st);
+					dispose();
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

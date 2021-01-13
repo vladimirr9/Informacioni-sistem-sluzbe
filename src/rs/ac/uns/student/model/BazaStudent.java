@@ -140,7 +140,6 @@ public class BazaStudent {
 		float prosek = 0;
 			for (Ocena o : s.getPolozeniIspiti())
 			{
-				System.out.println("ocena:" + o.getOcena());
 				prosek += o.getOcena();
 			}
 			if (s.getPolozeniIspiti().size() > 0)
