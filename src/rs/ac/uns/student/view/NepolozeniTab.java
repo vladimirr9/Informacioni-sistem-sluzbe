@@ -8,19 +8,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import rs.ac.uns.MainFrame;
 import rs.ac.uns.student.model.BazaStudent;
+import rs.ac.uns.student.model.Student;
 
 public class NepolozeniTab extends JPanel {
 	
 	private NepolozeniTab nt = this;
 	private NepolozeniJTable nepolozeniJTable;
 
-	public NepolozeniTab(int row) {
+	public NepolozeniTab(int row, StudentEditTabbedPane parent) {
 		super();
 		
 		GridBagLayout gb=new GridBagLayout();
@@ -43,7 +45,7 @@ public class NepolozeniTab extends JPanel {
 		this.add(jpanel,gbc);
 		
 		gbc=new GridBagConstraints(0, 1, 6, 6, 100, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(30, 30, 0, 30), 0, 0);
-		nepolozeniJTable=new NepolozeniJTable();
+		nepolozeniJTable= parent.getNepolozeniJTable();
 		JScrollPane scrollPane = new JScrollPane(nepolozeniJTable);
 		this.add(scrollPane,gbc);
 		
@@ -64,7 +66,21 @@ public class NepolozeniTab extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				if (nepolozeniJTable.getSelectedRow() != -1)
 				{
-					UklanjanjePredmetaDialog upd = new UklanjanjePredmetaDialog(nt, BazaStudent.getInstance().findStudentByRow(row));
+					Student s = BazaStudent.getInstance().findStudentByRow(row);
+					int reply=JOptionPane.showOptionDialog(nt, 
+					        "Da li ste sigurni da želite da uklonite predmet?", 
+					        "Uklanjanje predmeta", 
+					        JOptionPane.OK_CANCEL_OPTION, 
+					        JOptionPane.INFORMATION_MESSAGE, 
+					        null, 
+					        new String[]{"Da", "Ne"}, 
+					        "default");
+					if(reply==JOptionPane.YES_OPTION) {
+						BazaStudent.getInstance().ukloniPredmet(s.getBrojIndeksa(), nt.getNepolozeniJTable());
+						//validate();
+						
+						}
+					
 					//upd.setVisible(true);
 				}
 				

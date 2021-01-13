@@ -4,13 +4,16 @@ import java.util.Date;
 import java.util.List;
 
 import rs.ac.uns.MainFrame;
+import rs.ac.uns.ocena.controller.OcenaController;
 import rs.ac.uns.ocena.model.Ocena;
+import rs.ac.uns.ocena.view.OcenaJTable;
 import rs.ac.uns.predmet.model.BazaPredmeta;
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.student.model.BazaStudent;
 import rs.ac.uns.student.model.GodinaStudiranja;
 import rs.ac.uns.student.model.Student;
 import rs.ac.uns.student.model.StudentStatus;
+import rs.ac.uns.student.view.NepolozeniJTable;
 
 public class StudentController {
 
@@ -48,6 +51,18 @@ private static StudentController instance = null;
 		student.setS(status);
 		MainFrame.getInstance().azurirajPrikazStudenta("Izmena Studenta", -1);
 		
+	}
+	
+	public void ponistiOcenu(String brojIndeksa, NepolozeniJTable nt) {
+		Student student=BazaStudent.getInstance().getStudentByIndeks(brojIndeksa);
+		int indeksPredmeta=OcenaJTable.getInstance().convertRowIndexToModel(OcenaJTable.getInstance().getSelectedRow());
+		Predmet pred=student.getPolozeniIspiti().get(indeksPredmeta).getPredmet();
+		student.getPolozeniIspiti().remove(indeksPredmeta); 
+		student.getNepolozeniIspiti().add(pred);
+		OcenaController.getInstance().removeOcena(student,pred);
+		student.setProsecnaOcena((BazaStudent.getInstance().getProsek(brojIndeksa)));
+		nt.azuriraj();
+		MainFrame.getInstance().azurirajPrikazOcene("Azuriranje ocena", -1);
 	}
 	
 	public List<Student> getStudenti(){

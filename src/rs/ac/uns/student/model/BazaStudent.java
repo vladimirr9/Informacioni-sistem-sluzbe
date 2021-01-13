@@ -139,17 +139,33 @@ public class BazaStudent {
 		float prosek = 0;
 		for (Student s : studenti)
 		{
-			if (s.getBrojIndeksa().equals(indeks))
+			if (s.getBrojIndeksa().equalsIgnoreCase(indeks))
 			for (Ocena o : s.getPolozeniIspiti())
 			{
+				System.out.println("ocena:" + o.getOcena());
 				prosek += o.getOcena();
 			}
-			if (s.getPolozeniIspiti().size() != 0)
+			if (s.getPolozeniIspiti().size() > 0)
 			{
 				prosek = prosek / s.getPolozeniIspiti().size();
 			}
 			break;
 		}
+		return prosek;
+	}
+	public float getProsek(Student s)
+	{
+		float prosek = 0;
+			for (Ocena o : s.getPolozeniIspiti())
+			{
+				System.out.println("ocena:" + o.getOcena());
+				prosek += o.getOcena();
+			}
+			if (s.getPolozeniIspiti().size() > 0)
+			{
+				prosek = prosek / s.getPolozeniIspiti().size();
+			}
+		
 		return prosek;
 	}
 	public void dodajStudenta(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
