@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import rs.ac.uns.predmet.model.Predmet;
+import rs.ac.uns.predmet.model.PredmetGodina;
+import rs.ac.uns.predmet.model.PredmetSemestar;
 import rs.ac.uns.student.model.Student;
 
 public class BazaProfesora {
@@ -38,7 +41,9 @@ public class BazaProfesora {
 	private void initProfesore() {
 		this.profesori = new ArrayList<Profesor>();
 		try {
-			profesori.add(new Profesor("Petrović", "Petar",new SimpleDateFormat("dd.MM.yyyy.").parse("01.12.1963."),"Bulevar oslobođenja 100, Novi Sad ","0601112221","Petar@gmail.com","Bulevar oslobođenja 133, Novi Sad","000000001", ProfesorTitula.BSC, ProfesorZvanje.ASISTENT));
+			List<Predmet>lista=new ArrayList<Predmet>();
+			lista.add(new Predmet("E2N", "LPRS", PredmetSemestar.ZIMSKI, PredmetGodina.DRUGA,5));
+			profesori.add(new Profesor("Petrović", "Petar",new SimpleDateFormat("dd.MM.yyyy.").parse("01.12.1963."),"Bulevar oslobođenja 100, Novi Sad ","0601112221","Petar@gmail.com","Bulevar oslobođenja 133, Novi Sad","000000001", ProfesorTitula.BSC, ProfesorZvanje.ASISTENT,lista));
 			profesori.add(new Profesor("Žikić", "Žika",new SimpleDateFormat("dd.MM.yyyy.").parse("08.02.1961."),"Bulevar oslobođenja 101, Novi Sad ","0601112222","Zika@gmail.com","Bulevar oslobođenja 133, Novi Sad","000000002", ProfesorTitula.BSC, ProfesorZvanje.ASISTENT));
 			profesori.add(new Profesor("Perić", "Pera",new SimpleDateFormat("dd.MM.yyyy.").parse("18.10.1968."),"Bulevar oslobođenja 102, Novi Sad ","0601112223","Pera@gmail.com","Bulevar oslobođenja 133, Novi Sad","000000003" ,ProfesorTitula.DOKTOR,ProfesorZvanje.REDOVNI_PROFESOR));
 		} catch (ParseException e) {

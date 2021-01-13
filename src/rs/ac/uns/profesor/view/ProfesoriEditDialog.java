@@ -18,8 +18,8 @@ public class ProfesoriEditDialog extends JDialog {
 		JTabbedPaneMine tabbedPane=new JTabbedPaneMine();
 		ProfesoriInfoTab profesoriInfoTab=new ProfesoriInfoTab();
 		tabbedPane.addTab("Info", profesoriInfoTab);
-		JPanel predmeti=new JPanel();
-		tabbedPane.addTab("Predmeti", predmeti);
+		ProfesoriPredmetiTab profesoriPredmetiTab=new ProfesoriPredmetiTab();
+		tabbedPane.addTab("Predmeti", profesoriPredmetiTab);
 		this.add(tabbedPane);
 	}
 	
