@@ -25,7 +25,7 @@ public class Serialization {
 	
 	public  void BazaStudenataSerialization() {
 		try {
-            File f=new File("data"+File.separator+"baza1.txt");
+            File f=new File("data"+File.separator+"baza1");
             ObjectOutputStream oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
             try{oos.writeObject(BazaStudent.getInstance().getStudenti());}
             finally {
@@ -43,7 +43,7 @@ public class Serialization {
 	
 	public  void BazaProfesoraSerialization() {
 		try {
-            File f=new File("data"+File.separator+"baza2.txt");
+            File f=new File("data"+File.separator+"baza2");
             ObjectOutputStream oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
             try{oos.writeObject(BazaProfesora.getInstance().getProfesori());}
             finally {
@@ -61,7 +61,7 @@ public class Serialization {
 	
 	public  void BazaPredmetaSerialization() {
 		try {
-            File f=new File("data"+File.separator+"baza3.txt");
+            File f=new File("data"+File.separator+"baza3");
             ObjectOutputStream oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
             try{oos.writeObject(BazaPredmeta.getInstance().getPredmeti());}
             finally {
@@ -79,7 +79,7 @@ public class Serialization {
 	
 	public  void BazaOcenaSerialization() {
 		try {
-            File f=new File("data"+File.separator+"baza4.txt");
+            File f=new File("data"+File.separator+"baza4");
             ObjectOutputStream oos=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(f)));
             try{oos.writeObject(BazaOcena.getInstance().getOcene());}
             finally {

@@ -31,7 +31,7 @@ private static Deserialization instance = null;
 		return instance;
 	}
 	public  void bazaStudenataDeserialization() {
-		File f=new File("data"+File.separator+"baza1.txt");
+		File f=new File("data"+File.separator+"baza1");
 		ObjectInputStream ois;
 		try {
 			ois=new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));
@@ -52,7 +52,7 @@ private static Deserialization instance = null;
 	}
 	
 	public  void bazaProfesoraDeserialization() {
-		File f=new File("data"+File.separator+"baza2.txt");
+		File f=new File("data"+File.separator+"baza2");
 		ObjectInputStream ois;
 		try {
 			ois=new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));
@@ -72,7 +72,7 @@ private static Deserialization instance = null;
 	}
 	}
 	public  void bazaPredmetaDeserialization() {
-		File f=new File("data"+File.separator+"baza3.txt");
+		File f=new File("data"+File.separator+"baza3");
 		ObjectInputStream ois;
 		try {
 			ois=new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));
@@ -91,7 +91,7 @@ private static Deserialization instance = null;
 	}
 	}
 	public  void bazaOcenaDeserialization() {
-		File f=new File("data"+File.separator+"baza4.txt");
+		File f=new File("data"+File.separator+"baza4");
 		ObjectInputStream ois;
 		try {
 			ois=new ObjectInputStream(new BufferedInputStream(new FileInputStream(f)));
