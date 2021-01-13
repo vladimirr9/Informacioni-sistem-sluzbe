@@ -2,16 +2,21 @@ package rs.ac.uns.student.view;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableRowSorter;
 
 public class StudentJTable extends JTable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7500908696013392259L;
+	private TableRowSorter<AbstractTableModelStudent> sorter;
 
 	public StudentJTable() {
 		this.setRowSelectionAllowed(true);
@@ -29,5 +34,7 @@ public class StudentJTable extends JTable {
 		}
 		return c;
 	}
+	
+	
 
 }

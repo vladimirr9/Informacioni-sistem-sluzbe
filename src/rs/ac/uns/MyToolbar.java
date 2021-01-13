@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.Action;
@@ -32,6 +33,7 @@ import rs.ac.uns.abstractActions.EditAction;
 import rs.ac.uns.abstractActions.NewAction;
 import rs.ac.uns.predmet.view.AbstractTableModelPredmeti;
 import rs.ac.uns.profesor.view.AbstractTableModelProfesori;
+import rs.ac.uns.student.view.AbstractTableModelStudent;
 
 public class MyToolbar extends JToolBar {
 	public MyToolbar(final JFrame parent) {
@@ -96,7 +98,29 @@ public class MyToolbar extends JToolBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(MainFrame.tabbedPane.getSelectedIndex()==1) {
+				if (MainFrame.tabbedPane.getSelectedIndex()==0) {
+					String filter = txtField.getText();
+					String delovi[]=filter.split(" ");
+					AbstractTableModelStudent model = (AbstractTableModelStudent) MainFrame.getInstance().getTabelaStudent().getModel();
+					final TableRowSorter< AbstractTableModelStudent> sorter = new TableRowSorter< AbstractTableModelStudent>(model);
+					MainFrame.getInstance().getTabelaStudent().setRowSorter(sorter);
+					if (delovi.length==2) {
+						 RowFilter<AbstractTableModelStudent, Integer> pFilter=RowFilter.regexFilter(".*"+"(?i)"+ delovi[0]+".*", 2);
+						 RowFilter<AbstractTableModelStudent, Integer> iFilter=RowFilter.regexFilter(".*"+"(?i)"+ delovi[1]+".*", 1);
+						 List<RowFilter<AbstractTableModelStudent, Integer>> filteri = Arrays.asList(pFilter, iFilter);
+						 sorter.setRowFilter(RowFilter.andFilter(filteri));
+					}
+					else if(delovi.length == 3) {
+						 RowFilter<AbstractTableModelStudent, Integer> pFilter=RowFilter.regexFilter(".*"+"(?i)"+ delovi[0]+".*", 2);
+						 RowFilter<AbstractTableModelStudent, Integer> iFilter=RowFilter.regexFilter(".*"+"(?i)"+ delovi[1]+".*", 1);
+						 RowFilter<AbstractTableModelStudent, Integer> indFilter=RowFilter.regexFilter(".*"+"(?i)"+ delovi[2]+".*", 0);
+						 List<RowFilter<AbstractTableModelStudent, Integer>> filteri = Arrays.asList(pFilter, iFilter,indFilter);
+						 sorter.setRowFilter(RowFilter.andFilter(filteri));
+					}
+					else {
+							sorter.setRowFilter(RowFilter.regexFilter((".*" +"(?i)"+ filter+".*"),2));
+					}
+				} else if(MainFrame.tabbedPane.getSelectedIndex()==1) {
 					String unesenTekst=txtField.getText();
 					String delovi[]=unesenTekst.split(" ");
 					AbstractTableModelProfesori model = (AbstractTableModelProfesori) MainFrame.getInstance().getTabelaProfesora().getModel();

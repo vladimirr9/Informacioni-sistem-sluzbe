@@ -53,7 +53,7 @@ public class PolozeniTab extends JPanel {
 		this.add(sPane,gbc);
 		
 		
-		float prosek = BazaStudent.getInstance().getProsek(student.getBrojIndeksa());
+		float prosek = BazaStudent.getInstance().getProsek(student);
 		String prosekTxt = String.format("Prosečna ocena: %.2f", prosek);
 		prosekL = new JLabel(prosekTxt);
 		gbc=new GridBagConstraints(0, 2, 3, 1, 100, 0, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets(0, 0, 0, 10), 0, 0);
