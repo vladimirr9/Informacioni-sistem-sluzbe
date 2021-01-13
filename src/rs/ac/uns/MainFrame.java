@@ -72,7 +72,6 @@ public class MainFrame extends JFrame{
 			@Override
 			public void windowOpened(WindowEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("aaja");
 				Deserialization.getInstance().bazaStudenataDeserialization();
 				Deserialization.getInstance().bazaProfesoraDeserialization();
 				Deserialization.getInstance().bazaPredmetaDeserialization();

@@ -45,6 +45,8 @@ public class Predmet implements Serializable {
 		this.godina = godina;
 		this.bodovi = bodovi;
 	}
+	
+	
 
 	public String getSifra() {
 		return sifra;

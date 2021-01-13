@@ -41,7 +41,6 @@ public DeleteAction(final JFrame parent) {
 			if(reply==JOptionPane.YES_OPTION) {
 				int row=MainFrame.getInstance().getTabelaPredmeta().convertRowIndexToModel(MainFrame.getInstance().getTabelaPredmeta().getSelectedRow());
 				Predmet p=PredmetController.getInstance().getPredmet(row);
-				System.out.println(p.getSifra());
 				PredmetController.getInstance().izbrisiPredmet(p);
 				MainFrame.getInstance().azurirajPrikazPredmeta("Brisanje predmeta", -1);
 			}

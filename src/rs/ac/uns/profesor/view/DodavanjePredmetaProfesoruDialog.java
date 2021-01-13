@@ -45,19 +45,22 @@ public class DodavanjePredmetaProfesoruDialog extends JDialog {
 		int row=MainFrame.getInstance().getTabelaProfesora().convertRowIndexToModel(MainFrame.getInstance().getTabelaProfesora().getSelectedRow());
 		List<Predmet>predmetiProfesora=ProfesorController.getInstance().getProfesor(row).getPredmeti();
 		
+
+		
 		DefaultListModel<String> listaVal = new DefaultListModel<>();
 		for(Predmet p:predmetiSvi) {
 			Boolean b=true;
-			for(Predmet testni:predmetiProfesora) {
-				if(p.getSifra().equals(testni.getSifra())) {
+			
+				if(p.getProfesor()!=null ) {
 					b=false;
 				}
-			}
+		
 			if(b) {
 				String tekst=p.getSifra()+" - "+p.getNaziv();
 				listaVal.addElement(tekst);
 			}
 		}
+		
 		
 		JList list = new JList<>(listaVal);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -106,7 +109,7 @@ public class DodavanjePredmetaProfesoruDialog extends JDialog {
 						List<Predmet>lista=p.getPredmeti();
 						lista.add(pp);
 						p.setPredmeti(lista);
-						
+						pp.setProfesor(p);
 						AbstractTableModelPredmetiZaProfesora model=(AbstractTableModelPredmetiZaProfesora) tabela.getModel();
 						model.fireTableDataChanged();
 						validate();
