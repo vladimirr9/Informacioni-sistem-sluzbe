@@ -42,8 +42,10 @@ private static ProfesorController instance = null;
 	}
 	public void izbrisiProfesor(Profesor p) {
 		for (Predmet pr : PredmetController.getInstance().getPredmeti()) {
-			if (pr.getProfesor() == p) {
-				pr.setProfesor(null);
+			if (pr.getProfesor() != null){
+				if (pr.getProfesor().getBrojLicneKarte().equals(p.getBrojLicneKarte())) {
+					pr.setProfesor(null);
+				}
 			}
 		}
 		BazaProfesora.getInstance().obrisiProfesora(p);

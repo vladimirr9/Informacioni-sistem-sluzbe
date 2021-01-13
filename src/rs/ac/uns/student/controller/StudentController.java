@@ -5,8 +5,10 @@ import java.util.List;
 
 import rs.ac.uns.MainFrame;
 import rs.ac.uns.ocena.controller.OcenaController;
+import rs.ac.uns.ocena.model.BazaOcena;
 import rs.ac.uns.ocena.model.Ocena;
 import rs.ac.uns.ocena.view.OcenaJTable;
+import rs.ac.uns.predmet.controller.PredmetController;
 import rs.ac.uns.predmet.model.BazaPredmeta;
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.student.model.BazaStudent;
@@ -70,6 +72,23 @@ private static StudentController instance = null;
 		return BazaStudent.getInstance().getRow(rowIndex);
 	}
 	public void izbrisiStudent(Student s) {
-		BazaStudent.getInstance().obrisiStudent(s);
+		for (Predmet p : PredmetController.getInstance().getPredmeti()) {
+			if (p != null)
+			{
+				if (p.getPolozili() != null)
+					for (Student s1 : p.getPolozili()) {
+						if (s1.equals(s))
+							p.getPolozili().remove(s);
+					}
+				if (p.getNisuPolozili() != null)
+					for (Student s1 : p.getNisuPolozili()) {
+						if (s1.equals(s))
+							p.getNisuPolozili().remove(s);
+					}
+			}
+			BazaStudent.getInstance().obrisiStudent(s);
+			
+			
+	}
 	}
 }

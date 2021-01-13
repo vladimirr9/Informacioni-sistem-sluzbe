@@ -36,4 +36,14 @@ private static OcenaController instance = null;
 			++i;
 		}
 	}
+	public void removeOcena(Student student) {
+		int i=0;
+		for (Ocena oc : BazaOcena.getInstance().getOcene()) {
+			if (oc.getStudent().getBrojIndeksa().equals(student.getBrojIndeksa())) {
+				BazaOcena.getInstance().getOcene().remove(i);
+				break;
+			}
+			++i;
+		}
+	}
 }
