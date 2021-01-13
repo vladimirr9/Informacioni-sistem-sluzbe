@@ -48,7 +48,7 @@ public class BazaOcena {
 			try {
 				Ocena o1 = new Ocena(s, p, 9, datum.parse("1.1.2018."));
 				ocene.add(o1);
-				s.getPolozeniIspiti().add(o1);
+				//s.getPolozeniIspiti().add(o1);
 				//p.getPolozili().add(s);
 				Predmet p2 = BazaPredmeta.getInstance().getPredmeti().get(2);
 				Ocena o2 = new Ocena(s, p2, 10, datum.parse("6.5.2017."));

@@ -10,6 +10,7 @@ import rs.ac.uns.ocena.model.Ocena;
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.predmet.model.PredmetGodina;
 import rs.ac.uns.predmet.model.PredmetSemestar;
+import rs.ac.uns.student.view.NepolozeniJTable;
 
 public class BazaStudent {
 	private static BazaStudent instance = null;
@@ -161,5 +162,11 @@ public class BazaStudent {
 				break;
 			}
 		}
+	}
+	public void ukloniPredmet(String brojIndeksa, NepolozeniJTable t) {
+		Student student=this.getStudentByIndeks(brojIndeksa);
+		int indeksPredmetaZaUk=t.convertRowIndexToModel(t.getSelectedRow());
+		student.getNepolozeniIspiti().remove(indeksPredmetaZaUk);
+		t.azuriraj();
 	}
 }

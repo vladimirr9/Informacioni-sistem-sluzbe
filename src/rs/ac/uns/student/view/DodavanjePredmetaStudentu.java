@@ -75,8 +75,6 @@ public class DodavanjePredmetaStudentu extends JDialog {
 				}
 			}
 		}
-		for (Predmet p : predmetiZaDodavanje)
-			System.out.println(p.getNaziv());
 		
 		for (Predmet p:predmetiZaDodavanje) {
 			String naziv=p.getSifra()+"-"+p.getNaziv();
@@ -104,12 +102,15 @@ public class DodavanjePredmetaStudentu extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Predmet p=predmetiZaDodavanje.get(list.getSelectedIndex());
-				predmetiZaDodavanje.remove(list.getSelectedIndex());
-				s.getNepolozeniIspiti().add(p);
-				parent.getNepolozeniJTable().azuriraj();
-				validate();
-				dispose();
+				if (list.getSelectedIndex() != -1)
+				{
+					Predmet p=predmetiZaDodavanje.get(list.getSelectedIndex());
+					predmetiZaDodavanje.remove(list.getSelectedIndex());
+					s.getNepolozeniIspiti().add(p);
+					parent.getNepolozeniJTable().azuriraj();
+					validate();
+					dispose();
+				}
 			}
 		});
 		

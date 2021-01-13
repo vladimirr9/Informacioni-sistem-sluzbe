@@ -57,6 +57,18 @@ public class NepolozeniTab extends JPanel {
 				dps.setVisible(true);
 			}
 		});
+		obrisi.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (nepolozeniJTable.getSelectedRow() != -1)
+				{
+					UklanjanjePredmetaDialog upd = new UklanjanjePredmetaDialog(nt, BazaStudent.getInstance().findStudentByRow(row));
+					//upd.setVisible(true);
+				}
+				
+			}
+		});
 	}
 
 	public NepolozeniJTable getNepolozeniJTable() {
