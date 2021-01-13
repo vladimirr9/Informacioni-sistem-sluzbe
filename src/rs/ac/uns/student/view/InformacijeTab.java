@@ -38,7 +38,7 @@ public class InformacijeTab extends JPanel {
 		InformacijeTab si =this;
 		
 		//int row = MainFrame.getInstance().getTabelaStudent().convertRowIndexToModel(MainFrame.getInstance().getTabelaStudent().getSelectedRow());
-		System.out.println(row);
+		//System.out.println(row);
 		Student student = BazaStudent.getInstance().getRow(row);
 		
 		GridBagLayout gb=new GridBagLayout();

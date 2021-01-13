@@ -56,7 +56,7 @@ public DeleteAction(final JFrame parent) {
 			        new String[]{"Da", "Ne"}, 
 			        "default");
 			if(reply==JOptionPane.YES_OPTION) {
-				int row=MainFrame.getInstance().getTabelaStudent().getSelectedRow();
+				int row=MainFrame.getInstance().getTabelaStudent().convertRowIndexToModel(MainFrame.getInstance().getTabelaStudent().getSelectedRow());
 				Student s=StudentController.getInstance().getStudent(row);
 				StudentController.getInstance().izbrisiStudent(s);
 				MainFrame.getInstance().azurirajPrikazStudenta("Brisanje Studenta", -1);
@@ -71,7 +71,7 @@ public DeleteAction(final JFrame parent) {
 			        new String[]{"Da", "Ne"}, 
 			        "default");
 			if(reply==JOptionPane.YES_OPTION) {
-				int row=MainFrame.getInstance().getTabelaProfesora().getSelectedRow();
+				int row=MainFrame.getInstance().getTabelaProfesora().convertRowIndexToModel(MainFrame.getInstance().getTabelaProfesora().getSelectedRow());
 				Profesor p=ProfesorController.getInstance().getProfesor(row);
 				ProfesorController.getInstance().izbrisiProfesor(p);
 				MainFrame.getInstance().azurirajPrikazProfesora("Brisanje Profesora", -1);
