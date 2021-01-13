@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import rs.ac.uns.MainFrame;
+import rs.ac.uns.data.Deserialization;
 import rs.ac.uns.ocena.model.Ocena;
 import rs.ac.uns.ocena.view.OcenaJTable;
 import rs.ac.uns.predmet.model.Predmet;
@@ -49,7 +50,7 @@ public class BazaStudent {
 	}
 	private void initStudente() {
 		this.studenti = new ArrayList<Student>();
-		try {
+		/*try {
 			List<Predmet>predmetiproba=new ArrayList<Predmet>();
 			
 			
@@ -66,7 +67,8 @@ public class BazaStudent {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		
 	}
 	public Student getStudentByIndeks(String brojIndeksa) {
 		for (Student s : studenti) {
@@ -133,26 +135,6 @@ public class BazaStudent {
 		}
 		return espb;
 	}
-	
-	public float getProsek(String indeks)
-	{
-		float prosek = 0;
-		for (Student s : studenti)
-		{
-			if (s.getBrojIndeksa().equalsIgnoreCase(indeks))
-			for (Ocena o : s.getPolozeniIspiti())
-			{
-				System.out.println("ocena:" + o.getOcena());
-				prosek += o.getOcena();
-			}
-			if (s.getPolozeniIspiti().size() > 0)
-			{
-				prosek = prosek / s.getPolozeniIspiti().size();
-			}
-			break;
-		}
-		return prosek;
-	}
 	public float getProsek(Student s)
 	{
 		float prosek = 0;
@@ -165,7 +147,7 @@ public class BazaStudent {
 			{
 				prosek = prosek / s.getPolozeniIspiti().size();
 			}
-		
+		s.setProsecnaOcena(prosek);
 		return prosek;
 	}
 	public void dodajStudenta(String prezime, String ime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,

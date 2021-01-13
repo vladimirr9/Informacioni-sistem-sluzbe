@@ -58,7 +58,7 @@ private static StudentController instance = null;
 		student.getPolozeniIspiti().remove(indeksPredmeta); 
 		student.getNepolozeniIspiti().add(pred);
 		OcenaController.getInstance().removeOcena(student,pred);
-		student.setProsecnaOcena((BazaStudent.getInstance().getProsek(brojIndeksa)));
+		student.setProsecnaOcena((BazaStudent.getInstance().getProsek(student)));
 		nt.azuriraj();
 		MainFrame.getInstance().azurirajPrikazOcene("Azuriranje ocena", -1);
 	}

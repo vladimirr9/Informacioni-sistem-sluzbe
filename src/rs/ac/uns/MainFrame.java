@@ -5,6 +5,17 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,13 +23,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import rs.ac.uns.data.Deserialization;
 import rs.ac.uns.data.Serialization;
 import rs.ac.uns.ocena.view.AbstractTableOcena;
 import rs.ac.uns.ocena.view.OcenaJTable;
+import rs.ac.uns.predmet.controller.PredmetController;
+import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.predmet.view.AbstractTableModelPredmeti;
 import rs.ac.uns.predmet.view.PredmetiJTable;
+import rs.ac.uns.profesor.controller.ProfesorController;
+import rs.ac.uns.profesor.model.Profesor;
 import rs.ac.uns.profesor.view.AbstractTableModelProfesori;
 import rs.ac.uns.profesor.view.ProfesoriJTable;
+import rs.ac.uns.student.controller.StudentController;
+import rs.ac.uns.student.model.BazaStudent;
+import rs.ac.uns.student.model.Student;
 import rs.ac.uns.student.view.AbstractTableModelStudent;
 import rs.ac.uns.student.view.StudentJTable;
 
@@ -48,6 +67,56 @@ public class MainFrame extends JFrame{
 		setResizable(true);
 		setVisible(true);
 		
+		addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("aaja");
+				Deserialization.getInstance().bazaStudenataDeserialization();
+				Deserialization.getInstance().bazaProfesoraDeserialization();
+				Deserialization.getInstance().bazaPredmetaDeserialization();
+				Deserialization.getInstance().bazaOcenaDeserialization();
+			}
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+				Serialization.getInstance().BazaStudenataSerialization();
+				Serialization.getInstance().BazaProfesoraSerialization();
+				Serialization.getInstance().BazaPredmetaSerialization();
+				Serialization.getInstance().BazaOcenaSerialization();
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+			
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		MyMenuBar myMenu = new MyMenuBar(this);
 		this.setJMenuBar(myMenu);
@@ -75,58 +144,6 @@ public class MainFrame extends JFrame{
 		this.add(tabbedPane,BorderLayout.CENTER);
 		
 		validate();
-		
-addWindowListener(new WindowListener() {
-			
-			@Override
-			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
-				Serialization.getInstance().BazaStudenataSerialization();
-				Serialization.getInstance().BazaProfesoraSerialization();
-				Serialization.getInstance().BazaPredmetaSerialization();
-				Serialization.getInstance().BazaOcenaSerialization();
-			}
-			
-			@Override
-			public void windowClosed(WindowEvent e) {
-				Serialization.getInstance().BazaStudenataSerialization();
-				Serialization.getInstance().BazaProfesoraSerialization();
-				Serialization.getInstance().BazaPredmetaSerialization();
-				Serialization.getInstance().BazaOcenaSerialization();
-				
-			}
-			
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
 	}
 	
 	public void azurirajPrikazProfesora(String akcija, int vrednost) {
@@ -162,4 +179,6 @@ addWindowListener(new WindowListener() {
 		model.fireTableDataChanged();
 		validate();
 	}
+	
+	
 }

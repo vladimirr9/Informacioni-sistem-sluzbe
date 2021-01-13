@@ -42,7 +42,7 @@ public class BazaOcena {
 	
 		public void initOcene() {
 			DateFormat datum = new SimpleDateFormat("dd.MM.yyyy.");
-			Student s = BazaStudent.getInstance().getStudenti().get(0);
+			/*Student s = BazaStudent.getInstance().getStudenti().get(0);
 			Predmet p = BazaPredmeta.getInstance().getPredmeti().get(0);
 	
 			try {
@@ -60,7 +60,7 @@ public class BazaOcena {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 		}
 			
 			public int getNumberOfColumns() {

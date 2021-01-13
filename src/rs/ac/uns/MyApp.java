@@ -1,5 +1,6 @@
 package rs.ac.uns;
 
+import rs.ac.uns.data.Deserialization;
 import rs.ac.uns.predmet.model.BazaPredmeta;
 import rs.ac.uns.profesor.controller.ProfesorController;
 import rs.ac.uns.profesor.model.BazaProfesora;

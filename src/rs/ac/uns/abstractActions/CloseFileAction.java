@@ -8,6 +8,7 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 
+import rs.ac.uns.MainFrame;
 import rs.ac.uns.data.Serialization;
 
 public class CloseFileAction extends AbstractAction {
@@ -32,5 +33,6 @@ public class CloseFileAction extends AbstractAction {
 		Serialization.getInstance().BazaProfesoraSerialization();
 		Serialization.getInstance().BazaPredmetaSerialization();
 		Serialization.getInstance().BazaOcenaSerialization();
+		MainFrame.getInstance().dispose();
 	}
 }

@@ -40,7 +40,7 @@ public class BazaProfesora {
 
 	private void initProfesore() {
 		this.profesori = new ArrayList<Profesor>();
-		try {
+		/*try {
 			List<Predmet>lista=new ArrayList<Predmet>();
 			lista.add(new Predmet("E2N", "LPRS", PredmetSemestar.ZIMSKI, PredmetGodina.DRUGA,5));
 			profesori.add(new Profesor("Petrović", "Petar",new SimpleDateFormat("dd.MM.yyyy.").parse("01.12.1963."),"Bulevar oslobođenja 100, Novi Sad ","0601112221","Petar@gmail.com","Bulevar oslobođenja 133, Novi Sad","000000001", ProfesorTitula.BSC, ProfesorZvanje.ASISTENT,lista));
@@ -49,7 +49,7 @@ public class BazaProfesora {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	public List<Profesor> getProfesori() {

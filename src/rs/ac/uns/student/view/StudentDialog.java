@@ -233,12 +233,12 @@ public class StudentDialog extends JDialog {
 					else godinaStudiranja = GodinaStudiranja.V;
 					
 					
-					boolean postoji = false;
+					/*boolean postoji = false;
 					for (Student s : StudentController.getInstance().getStudenti())
 					{
 						if (s.getBrojIndeksa().equals(brojIndeksa))
 							postoji = true;
-					}
+					}*/
 					
 
 					StudentStatus status;
@@ -246,6 +246,7 @@ public class StudentDialog extends JDialog {
 						status = StudentStatus.B;
 					else
 						status = StudentStatus.S;
+					/*
 					if(!Pattern.matches("([a-zA-ZšđčćžŠĐČĆŽ]+[\\s]*)+", ime)) {
 						JOptionPane.showMessageDialog(null, "Neispravno uneto ime!");
 					} 
@@ -265,7 +266,7 @@ public class StudentDialog extends JDialog {
 					}
 						else if(!Pattern.matches("[0-9]{4}", String.valueOf(godinaUpisa))) {
 						JOptionPane.showMessageDialog(null, "Neispravno uneta godina upisa!");
-					} else {
+					} else*/ {
 					format = new SimpleDateFormat("dd.MM.yyyy.").parse(txtField3.getText());
 					StudentController.getInstance().dodajStudenta(prezime, ime, format, adresaStanovanja, brojTelefona, emailAdresa, brojIndeksa, godinaUpisa, godinaStudiranja, status);;
 					provera();
@@ -308,7 +309,7 @@ public class StudentDialog extends JDialog {
 			&& (Pattern.matches("([a-zA-ZšđčćžŠĐČĆŽ]+[\\s]*)+", prezime))
 			&&(Pattern.matches("[0-9]{1,2}[.][0-9]{1,2}[.][0-9]{4}[.]", txtField3.getText()))
 			&&(Pattern.matches("([\\wšđčćžŠĐČĆŽ]+[\\s]+)+[0-9]+[\\s]*,[\\s]*([\\wšđčćžŠĐČĆŽ]+[\\s]*)+", adresaStanovanja))
-			&&(Pattern.matches("[+]?[0-9]+", brojTelefona))
+			&&(Pattern.matches("[0-9]{3}[/][0-9]+[-][0-9]+", brojTelefona))
 			&&(Pattern.matches("^(.+)@(.+)$", emailAdresa))
 			&&(Pattern.matches("[0-9]{4}", txtField8.getText())) && !postoji)
 		{

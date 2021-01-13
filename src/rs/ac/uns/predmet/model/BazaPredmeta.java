@@ -38,11 +38,11 @@ public class BazaPredmeta {
 
 	private void initPredmete() {
 		this.predmeti = new ArrayList<Predmet>();
-		
+		/*
 			predmeti.add(new Predmet("E214", "PJISP", PredmetSemestar.ZIMSKI, PredmetGodina.PRVA,9));
 			predmeti.add(new Predmet("E2N", "LPRS", PredmetSemestar.ZIMSKI, PredmetGodina.DRUGA,5));
 			predmeti.add(new Predmet("E4JN", "SAU", PredmetSemestar.LETNJI, PredmetGodina.DRUGA,8));
-	
+	*/
 	}
 
 	public List<Predmet> getPredmeti() {
