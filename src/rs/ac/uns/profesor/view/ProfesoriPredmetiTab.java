@@ -3,8 +3,11 @@ package rs.ac.uns.profesor.view;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -36,6 +39,17 @@ public class ProfesoriPredmetiTab extends JPanel{
 		gbc=new GridBagConstraints(0, 1, 2, 1, 100, 100, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0);
 		JScrollPane scrollPane = new JScrollPane(predmetiZaProfesoraJTable);
 		this.add(scrollPane,gbc);
+		
+		JFrame jf=(JFrame) this.getParent();
+		dodajPredmet.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				DodavanjePredmetaProfesoruDialog dodavanjePredmetaProfesoruDialog=new DodavanjePredmetaProfesoruDialog(jf, "Dodaj predmet", true,predmetiZaProfesoraJTable);
+				dodavanjePredmetaProfesoruDialog.setVisible(true);
+			}
+		});
 	}
 	
 	
