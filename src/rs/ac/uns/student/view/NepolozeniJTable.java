@@ -20,7 +20,7 @@ public class NepolozeniJTable extends JTable {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		int row=MainFrame.getInstance().getTabelaStudent().getSelectedRow();
+		int row=MainFrame.getInstance().getTabelaStudent().convertRowIndexToModel(MainFrame.getInstance().getTabelaStudent().getSelectedRow());
 		Student s=StudentController.getInstance().getStudent(row);
 		this.setModel(new AbstractTableModelNepolozeni(s));
 		}

@@ -46,7 +46,7 @@ public class PolaganjeDialog extends JDialog {
 		npTable=this.npTable;
 		
 		
-		int row1=MainFrame.getInstance().getTabelaStudent().getSelectedRow();
+		int row1=MainFrame.getInstance().getTabelaStudent().convertRowIndexToModel(MainFrame.getInstance().getTabelaStudent().getSelectedRow());
 		//Student st=StudentController.getInstance().getStudent(row1);
 		Predmet p=st.getNepolozeniIspiti().get(parent.getNepolozeniJTable().getSelectedRow());
 		class MyDocListener implements DocumentListener

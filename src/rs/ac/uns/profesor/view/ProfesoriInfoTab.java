@@ -33,7 +33,7 @@ public class ProfesoriInfoTab extends JPanel{
 	public ProfesoriInfoTab() {
 		super();
 		
-		int row=MainFrame.getInstance().getTabelaProfesora().getSelectedRow();
+		int row=MainFrame.getInstance().getTabelaProfesora().convertRowIndexToModel(MainFrame.getInstance().getTabelaProfesora().getSelectedRow());
 		Profesor profesor=ProfesorController.getInstance().getProfesor(row);
 		
 		ProfesoriInfoTab pp=this;
