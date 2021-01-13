@@ -16,10 +16,21 @@ b) About (CTRL+A)	- prozor sa informacijama o autorima
 Toolbar sadrži dugme za kreiranje entiteta(CTRL+N),dugme za izmenu postojećeg entiteta(CTRL+E),dugme za brisanje entiteta(CTRL+D)
 kao i tekstualno polje i dugme za pretragu.
 
-Prikaz studenata i profesora je omogućen selekcijom odgovarajućeg taba, čime se otvara tabela koja sadrži podatke o svim entitetima u sistemu.
+Prikaz studenata, profesora i predmeta je omogućen selekcijom odgovarajućeg taba, čime se otvara tabela koja sadrži podatke o svim entitetima u sistemu.
 
 Prilikom korišćenja New akcije dolazi do otvaranja prozora koji omogućava korisniku da unese nove entitete u program u zavisnosti koji tab je selektovan.
 Format unosa podataka je naznačen tooltipom ukoliko nije intuitivan.
 
-Ovo je nedovršena lista, implementacija drugih funkcionalnosti je u toku i informacije o njima će naknadno biti dodate.
+Prilikom izmene studenata mogu se promeniti njegovi atributi kao i videti položeni ispiti, odnosno nepoloženi ispiti. Omogućena je manipulacija nad njima,
+unošenje ocena, poništavanje ocena, kao i dodavanje novih nepoloženih ispita.
+
+Izmenom profesora se mogu videti njegovi atributi kao i predmeti koje on drži. Moguće je dodavanje novih predmeta profesoru, kao i uklanjanje istih.
+
+Izmena predmeta omogućava da se menjaju podaci vezani za njega, kao i koji profesor drži predmet.
+
+Bar za pretragu omogućava pretraživanje po atributima entiteta u zavisnosti koji tab za prekazivanje je selektovan.
+
+Sortiranje u opadajućem, odnosno rastućem redosledu je omogućeno pritiskom kursora na zaglavnje kolone atributa.
+
+
 
