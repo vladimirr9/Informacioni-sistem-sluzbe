@@ -8,6 +8,7 @@ import rs.ac.uns.profesor.model.BazaProfesora;
 import rs.ac.uns.profesor.model.Profesor;
 import rs.ac.uns.profesor.model.ProfesorTitula;
 import rs.ac.uns.profesor.model.ProfesorZvanje;
+import rs.ac.uns.profesor.view.PredmetiZaProfesoraJTable;
 import rs.ac.uns.student.model.BazaStudent;
 import rs.ac.uns.student.model.Student;
 
@@ -39,5 +40,15 @@ private static ProfesorController instance = null;
 	}
 	public void izbrisiProfesor(Profesor p) {
 		BazaProfesora.getInstance().obrisiProfesora(p);
+	}
+	
+	
+	public void ukloniPredmet(String brojLicne, PredmetiZaProfesoraJTable table) {
+		int row=table.convertRowIndexToModel(table.getSelectedRow());
+		Profesor profesor=BazaProfesora.getInstance().getProfByLicna(brojLicne);
+		profesor.getPredmeti().get(row).setProfesor(null);
+		profesor.getPredmeti().remove(row);
+		
+		table.azuriraj();
 	}
 }

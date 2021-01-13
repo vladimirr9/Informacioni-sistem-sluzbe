@@ -101,6 +101,14 @@ public class BazaProfesora {
 			}
 		}
 	}
+	public Profesor getProfByLicna(String licna) {
+		for (Profesor p : profesori) {
+			if (p.getBrojLicneKarte().equals(licna)) {
+				return p;
+			}
+		}
+		return null;
+	}
 
 	
 }
