@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import rs.ac.uns.ocena.view.AbstractTableOcena;
+import rs.ac.uns.ocena.view.OcenaJTable;
 import rs.ac.uns.predmet.view.AbstractTableModelPredmeti;
 import rs.ac.uns.predmet.view.PredmetiJTable;
 import rs.ac.uns.profesor.view.AbstractTableModelProfesori;
@@ -97,5 +99,12 @@ public class MainFrame extends JFrame{
 	
 	public JTable getTabelaPredmeta() {
 		return tabelaPredmeta;
+	}
+	
+	public void azurirajPrikazOcene(String akcija, int vrednost) {
+		JTable tabelaOcena=OcenaJTable.getInstance();
+		AbstractTableOcena model=(AbstractTableOcena) tabelaOcena.getModel();
+		model.fireTableDataChanged();
+		validate();
 	}
 }

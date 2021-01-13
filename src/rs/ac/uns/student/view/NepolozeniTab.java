@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -65,6 +66,18 @@ public class NepolozeniTab extends JPanel {
 				{
 					UklanjanjePredmetaDialog upd = new UklanjanjePredmetaDialog(nt, BazaStudent.getInstance().findStudentByRow(row));
 					//upd.setVisible(true);
+				}
+				
+			}
+		});
+		JFrame jf=(JFrame) this.getParent();
+polaganje.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(nepolozeniJTable.getSelectedRow()!=-1) {
+					PolaganjeDialog polaganjeDialog=new PolaganjeDialog(jf, "Unos ocene", true,BazaStudent.getInstance().findStudentByRow(row),nt);
+					polaganjeDialog.setVisible(true);
 				}
 				
 			}

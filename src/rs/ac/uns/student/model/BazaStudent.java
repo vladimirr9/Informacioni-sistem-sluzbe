@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import rs.ac.uns.MainFrame;
 import rs.ac.uns.ocena.model.Ocena;
+import rs.ac.uns.ocena.view.OcenaJTable;
 import rs.ac.uns.predmet.model.Predmet;
 import rs.ac.uns.predmet.model.PredmetGodina;
 import rs.ac.uns.predmet.model.PredmetSemestar;
@@ -168,5 +170,14 @@ public class BazaStudent {
 		int indeksPredmetaZaUk=t.convertRowIndexToModel(t.getSelectedRow());
 		student.getNepolozeniIspiti().remove(indeksPredmetaZaUk);
 		t.azuriraj();
+	}
+	
+	public void dodajOcenu(String brojIndeksa,Ocena oc) {
+		Student student=this.getStudentByIndeks(brojIndeksa);
+		//student.getPolozeniIspiti().add(oc);
+		List<Ocena>lista=student.getPolozeniIspiti();
+		lista.add(oc);
+		student.setPolozeniIspiti(lista);
+		MainFrame.getInstance().azurirajPrikazOcene("Dodavanje polozenog, brisanje nepolozenog", -1);
 	}
 }
